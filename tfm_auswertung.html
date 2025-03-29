@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terraforming Mars VP Calculator</title>
+    <link rel="stylesheet" href="siemema-de.css">
+    <style>
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        table {
+            width: 100%;
+        }
+    </style>
+    <script src="tfm_auswertung.js" defer></script>
+</head>
+<body>
+    <header>Terraforming Mars VP Calculator</header>
+    <main>
+    <!-- Game Parameters Bereich -->
+    <div class="game-parameters">
+        <h2>Game Parameters</h2>
+
+        <!-- Spielfeld Auswahl -->
+        <label for="board-select" class="label-board">Board:</label>
+        <select id="board-select" onchange="resetTable(); updateMilestoneDropdowns();">
+            <option value="" selected>Choose Board</option>
+            <option value="Tharsis">Tharsis</option>
+            <option value="Hellas">Hellas</option>
+            <option value="Elysium">Elysium</option>
+        </select>
+
+        <!-- Game Modes Auswahl -->
+        <div class="game-modes">
+            <label>Game Modes:</label>
+            <input type="checkbox" id="draft-mode"> <label for="draft-mode">Draft</label>
+            <input type="checkbox" id="solar-phase"> <label for="solar-phase">Solar-Phase</label>
+            <input type="checkbox" id="highlight-draw"> <label for="highlight-draw">Highlight-Draw</label>
+        </div>
+
+        <!-- Expansions Auswahl -->
+        <div class="expansions">
+            <label>Expansions:</label>
+            <input type="checkbox" id="corporateEra"> <label for="corporateEra">Corporate Era</label>
+            <input type="checkbox" id="prelude"> <label for="prelude">Prelude</label>
+            <input type="checkbox" id="venusNext"> <label for="venusNext">Venus Next</label>
+            <input type="checkbox" id="colonies"> <label for="colonies">Colonies</label>
+            <input type="checkbox" id="turmoil"> <label for="turmoil">Turmoil</label>
+            <input type="checkbox" id="promoPack"> <label for="promoPack">Promos</label>
+            <input type="checkbox" id="bigBox"> <label for="bigBox">Promos Big-Box</label>
+            <input type="checkbox" id="collectorPromos"> <label for="collectorPromos">Collector Promos</label>        
+        </div>
+
+        <!-- Spieleranzahl Auswahl -->
+        <div class="player-selection">
+            <label>Number of Players:</label>
+            <input type="radio" name="player-count" value="1"> 1
+            <input type="radio" name="player-count" value="2"> 2
+            <input type="radio" name="player-count" value="3"> 3
+            <input type="radio" name="player-count" value="4"> 4
+            <input type="radio" name="player-count" value="5" checked> 5
+        </div>
+
+        <!-- NEUE Steuerungsleiste UNTERHALB der Parameter -->
+        <div class="control-panel">
+            <div class="toggle-container">
+                <span class="toggle-label">Desktop / Mobile</span>
+                <label class="switch">
+                    <input type="checkbox" id="modeToggle" onchange="toggleMode()">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <!-- Steuerung (Save & Reset) -->
+            <div class="button-container">
+                <button id="saveButton" onclick="saveGameData()">Save</button>
+                <button onclick="resetTable()">Reset</button>
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th contenteditable="true" class="center-header">Player 1</th>
+                    <th contenteditable="true" class="center-header">Player 2</th>
+                    <th contenteditable="true" class="center-header">Player 3</th>
+                    <th contenteditable="true" class="center-header">Player 4</th>
+                    <th contenteditable="true" class="center-header">Player 5</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="category-header">Corporation</td>
+                    <td><select class="corporation-select"></select></td>
+                    <td><select class="corporation-select"></select></td>
+                    <td><select class="corporation-select"></select></td>
+                    <td><select class="corporation-select"></select></td>
+                    <td><select class="corporation-select"></select></td>
+                </tr>
+                <tr>
+                	<td class="category-header">Terraform Rating</td>
+                	<td><input type="number" class="player1" value="20" onfocus="this.select();" oninput="updateSum()"></td> 
+                	<td><input type="number" class="player2" value="20" onfocus="this.select();" oninput="updateSum()"></td> 
+                	<td><input type="number" class="player3" value="20" onfocus="this.select();" oninput="updateSum()"></td> 
+                	<td><input type="number" class="player4" value="20" onfocus="this.select();" oninput="updateSum()"></td> 
+                	<td><input type="number" class="player5" value="20" onfocus="this.select();" oninput="updateSum()"></td>
+                </tr>
+                <tr>
+                	<td class="category-header">Victory Points</td> 
+                	<td><input type="number" class="player1" value="0" onfocus="this.select();" oninput="updateSum()"></td> 
+                	<td><input type="number" class="player2" value="0" onfocus="this.select();" oninput="updateSum()"></td> 
+                	<td><input type="number" class="player3" value="0" onfocus="this.select();" oninput="updateSum()"></td> 
+                	<td><input type="number" class="player4" value="0" onfocus="this.select();" oninput="updateSum()"></td> 
+                	<td><input type="number" class="player5" value="0" onfocus="this.select();" oninput="updateSum()"></td>
+                </tr>
+                <tr>
+                	<td class="category-header">Greeneries</td> 
+                	<td><input type="number" class="player1" value="0" onfocus="this.select();" oninput="enforceNonNegative(this); updateSum()"></td> 
+                	<td><input type="number" class="player2" value="0" onfocus="this.select();" oninput="enforceNonNegative(this); updateSum()"></td> 
+                	<td><input type="number" class="player3" value="0" onfocus="this.select();" oninput="enforceNonNegative(this); updateSum()"></td> 
+                	<td><input type="number" class="player4" value="0" onfocus="this.select();" oninput="enforceNonNegative(this); updateSum()"></td> 
+                	<td><input type="number" class="player5" value="0" onfocus="this.select();" oninput="enforceNonNegative(this); updateSum()"></td> 
+                </tr>
+                <tr>
+                	<td class="category-header">Cities</td> 
+                	<td><input type="number" class="player1" value="0" onfocus="this.select();" oninput="enforceNonNegative(this); updateSum()"></td> 
+                	<td><input type="number" class="player2" value="0" onfocus="this.select();" oninput="enforceNonNegative(this); updateSum()"></td> 
+                	<td><input type="number" class="player3" value="0" onfocus="this.select();" oninput="enforceNonNegative(this); updateSum()"></td> 
+                	<td><input type="number" class="player4" value="0" onfocus="this.select();" oninput="enforceNonNegative(this); updateSum()"></td> 
+                	<td><input type="number" class="player5" value="0" onfocus="this.select();" oninput="enforceNonNegative(this); updateSum()"></td> 
+                </tr>
+                <tr>
+                    <td class="category-header">Milestone 1</td>
+                    <td colspan="5"></td>
+                </tr>
+                <tr>
+                    <td class="category-header">
+                        <select class="milestone-select" data-milestone-index="1" onchange="updateMilestoneCheckboxes(1)">
+                            <option value="" selected>Choose Milestone</option>
+                        </select>
+                    </td>
+                    <td><input type="checkbox" class="milestone-checkbox" data-player="1" data-milestone="1" disabled onclick="validateMilestoneSelection(1)"></td>
+                    <td><input type="checkbox" class="milestone-checkbox" data-player="2" data-milestone="1" disabled onclick="validateMilestoneSelection(1)"></td>
+                    <td><input type="checkbox" class="milestone-checkbox" data-player="3" data-milestone="1" disabled onclick="validateMilestoneSelection(1)"></td>
+                    <td><input type="checkbox" class="milestone-checkbox" data-player="4" data-milestone="1" disabled onclick="validateMilestoneSelection(1)"></td>
+                    <td><input type="checkbox" class="milestone-checkbox" data-player="5" data-milestone="1" disabled onclick="validateMilestoneSelection(1)"></td>
+                </tr>
+
+                <tr>
+                    <td class="category-header">Milestone 2</td>
+                    <td colspan="5"></td>
+                </tr>
+                <tr>
+                    <td class="category-header">
+                        <select class="milestone-select" data-milestone-index="2" onchange="updateMilestoneCheckboxes(2)">
+                            <option value="" selected>Choose Milestone</option>
+                        </select>
+                    </td>
+                    <td><input type="checkbox" class="milestone-checkbox" data-player="1" data-milestone="2" disabled onclick="validateMilestoneSelection(2)"></td>
+                    <td><input type="checkbox" class="milestone-checkbox" data-player="2" data-milestone="2" disabled onclick="validateMilestoneSelection(2)"></td>
+                    <td><input type="checkbox" class="milestone-checkbox" data-player="3" data-milestone="2" disabled onclick="validateMilestoneSelection(2)"></td>
+                    <td><input type="checkbox" class="milestone-checkbox" data-player="4" data-milestone="2" disabled onclick="validateMilestoneSelection(2)"></td>
+                    <td><input type="checkbox" class="milestone-checkbox" data-player="5" data-milestone="2" disabled onclick="validateMilestoneSelection(2)"></td>
+                </tr>
+
+                <tr>
+                    <td class="category-header">Milestone 3</td>
+                    <td colspan="5"></td>
+                </tr>
+                <tr>
+                    <td class="category-header">
+                        <select class="milestone-select" data-milestone-index="3" onchange="updateMilestoneCheckboxes(3)">
+                            <option value="" selected>Choose Milestone</option>
+                        </select>
+                    </td>
+                    <td><input type="checkbox" class="milestone-checkbox" data-player="1" data-milestone="3" disabled onclick="validateMilestoneSelection(3)"></td>
+                    <td><input type="checkbox" class="milestone-checkbox" data-player="2" data-milestone="3" disabled onclick="validateMilestoneSelection(3)"></td>
+                    <td><input type="checkbox" class="milestone-checkbox" data-player="3" data-milestone="3" disabled onclick="validateMilestoneSelection(3)"></td>
+                    <td><input type="checkbox" class="milestone-checkbox" data-player="4" data-milestone="3" disabled onclick="validateMilestoneSelection(3)"></td>
+                    <td><input type="checkbox" class="milestone-checkbox" data-player="5" data-milestone="3" disabled onclick="validateMilestoneSelection(3)"></td>
+                </tr>
+                <tr>
+                    <td class="category-header">Milestones Points</td> 
+                    <td><input type="number" class="player1 milestone-points" value="0" readonly></td>
+                    <td><input type="number" class="player2 milestone-points" value="0" readonly></td>
+                    <td><input type="number" class="player3 milestone-points" value="0" readonly></td>
+                    <td><input type="number" class="player4 milestone-points" value="0" readonly></td>
+                    <td><input type="number" class="player5 milestone-points" value="0" readonly></td>
+                </tr>
+                <!-- Award 1 -->
+                <tr>
+                  <td class="category-header">
+                      <select class="award-select" data-award-index="1" onchange="updateAwardDropdowns()">
+                          <option value="" selected>Choose Award</option>
+                      </select>
+                  </td>
+                  <td class="award-cell">
+                      <div class="award-slider-container">
+                          <input type="range" class="award-slider" data-player="1" data-award="1" min="0" max="2" value="0" step="1" oninput="updateAwardSliders()">
+                      </div>
+                  </td>
+                  <td class="award-cell">
+                      <div class="award-slider-container">
+                          <input type="range" class="award-slider" data-player="2" data-award="1" min="0" max="2" value="0" step="1" oninput="updateAwardSliders()">
+                      </div>
+                  </td>
+                  <td class="award-cell">
+                      <div class="award-slider-container">
+                          <input type="range" class="award-slider" data-player="3" data-award="1" min="0" max="2" value="0" step="1" oninput="updateAwardSliders()">
+                      </div>
+                  </td>
+                  <td class="award-cell">
+                      <div class="award-slider-container">
+                          <input type="range" class="award-slider" data-player="4" data-award="1" min="0" max="2" value="0" step="1" oninput="updateAwardSliders()">
+                      </div>
+                  </td>
+                  <td class="award-cell">
+                      <div class="award-slider-container">
+                          <input type="range" class="award-slider" data-player="5" data-award="1" min="0" max="2" value="0" step="1" oninput="updateAwardSliders()">
+                      </div>
+                  </td>
+                </tr>
+
+                <!-- Award 2 -->
+                <tr>
+                  <td class="category-header">
+                      <select class="award-select" data-award-index="2" onchange="updateAwardDropdowns()">
+                          <option value="" selected>Choose Award</option>
+                      </select>
+                  </td>
+                  <td class="award-cell">
+                      <div class="award-slider-container">
+                          <input type="range" class="award-slider" data-player="1" data-award="2" min="0" max="2" value="0" step="1" oninput="updateAwardSliders()">
+                      </div>
+                  </td>
+                  <td class="award-cell">
+                      <div class="award-slider-container">
+                          <input type="range" class="award-slider" data-player="2" data-award="2" min="0" max="2" value="0" step="1" oninput="updateAwardSliders()">
+                      </div>
+                  </td>
+                  <td class="award-cell">
+                      <div class="award-slider-container">
+                          <input type="range" class="award-slider" data-player="3" data-award="2" min="0" max="2" value="0" step="1" oninput="updateAwardSliders()">
+                      </div>
+                  </td>
+                  <td class="award-cell">
+                      <div class="award-slider-container">
+                          <input type="range" class="award-slider" data-player="4" data-award="2" min="0" max="2" value="0" step="1" oninput="updateAwardSliders()">
+                      </div>
+                  </td>
+                  <td class="award-cell">
+                      <div class="award-slider-container">
+                          <input type="range" class="award-slider" data-player="5" data-award="2" min="0" max="2" value="0" step="1" oninput="updateAwardSliders()">
+                      </div>
+                  </td>
+                </tr>
+
+                <!-- Award 3 -->
+                <tr>
+                  <td class="category-header">
+                      <select class="award-select" data-award-index="3" onchange="updateAwardDropdowns()">
+                          <option value="" selected>Choose Award</option>
+                      </select>
+                  </td>
+                  <td class="award-cell">
+                      <div class="award-slider-container">
+                          <input type="range" class="award-slider" data-player="1" data-award="3" min="0" max="2" value="0" step="1" oninput="updateAwardSliders()">
+                      </div>
+                  </td>
+                  <td class="award-cell">
+                      <div class="award-slider-container">
+                          <input type="range" class="award-slider" data-player="2" data-award="3" min="0" max="2" value="0" step="1" oninput="updateAwardSliders()">
+                      </div>
+                  </td>
+                  <td class="award-cell">
+                      <div class="award-slider-container">
+                          <input type="range" class="award-slider" data-player="3" data-award="3" min="0" max="2" value="0" step="1" oninput="updateAwardSliders()">
+                      </div>
+                  </td>
+                  <td class="award-cell">
+                      <div class="award-slider-container">
+                          <input type="range" class="award-slider" data-player="4" data-award="3" min="0" max="2" value="0" step="1" oninput="updateAwardSliders()">
+                      </div>
+                  </td>
+                  <td class="award-cell">
+                      <div class="award-slider-container">
+                          <input type="range" class="award-slider" data-player="5" data-award="3" min="0" max="2" value="0" step="1" oninput="updateAwardSliders()">
+                      </div>
+                  </td>
+                </tr>
+                <!-- Award Points -->
+                <tr>
+                    <td class="category-header">Award Points</td>
+                    <td><input type="number" class="player1 award-points" value="0" readonly></td>
+                    <td><input type="number" class="player2 award-points" value="0" readonly></td>
+                    <td><input type="number" class="player3 award-points" value="0" readonly></td>
+                    <td><input type="number" class="player4 award-points" value="0" readonly></td>
+                    <td><input type="number" class="player5 award-points" value="0" readonly></td>
+                </tr>
+                <tr>
+                  <td class="category-header">Sum</td> 
+                  <td id="sum1" class="category-header">20</td> 
+                  <td id="sum2" class="category-header">20</td> 
+                  <td id="sum3" class="category-header">20</td> 
+                  <td id="sum4" class="category-header">20</td> 
+                  <td id="sum5" class="category-header">20</td>
+                </tr>
+                <!-- Rank und Money-Input als Tie-Breaker -->
+                <tr>
+                  <td class="category-header">Money (Tie-Breaker)</td>
+                  <td><input type="number" id="money1" value="0" disabled oninput="updateSum()"></td>
+                  <td><input type="number" id="money2" value="0" disabled oninput="updateSum()"></td>
+                  <td><input type="number" id="money3" value="0" disabled oninput="updateSum()"></td>
+                  <td><input type="number" id="money4" value="0" disabled oninput="updateSum()"></td>
+                  <td><input type="number" id="money5" value="0" disabled oninput="updateSum()"></td>
+              </tr>
+              <tr>
+                <td class="category-header">Rank</td>
+                <td id="rank1" class="category-header">1</td>
+                <td id="rank2" class="category-header">1</td>
+                <td id="rank3" class="category-header">1</td>
+                <td id="rank4" class="category-header">1</td>
+                <td id="rank5" class="category-header">1</td>
+            </tr>
+            </tbody>
+        </table>
+    </main>
+    <p><a href="index.html">Back to siemema.de</a></p>
+</html>

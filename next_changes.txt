@@ -1,0 +1,28 @@
+===================
+= DESKTOP VERSION =
+===================
+
+1.) Änderung der Spielerzahl: Tabelle wird nur teilweise neu aufgebaut. Es bleiben die Trennstriche stehen. Auch sollten die Spalten dann etwas nach rechts wandern, orientiert 
+    an rechten Rand der Tabelle.
+
+2.) BUG: Beim Ändern der Spielerzahl verschwindet die Zeile mit den Award-Points. Die Punkte werden aber noch mit einberechnet, es ist nur die Anzeige, die fehlt.
+==> BEHOBEN
+
+3.) FEATURE: Wir brauchen (vor allem für die spätere statische Auswertung) noch eine Zeile "Rank" ganz unten als letzte Zeile.
+    Grundsätzlich gilt: Wer in Summe die meisten Punkte hat, ist Platz, der nächstfolgende Platz 2 usw.
+    Der Rank soll genauso als read-only Feld errechnet und angezeigt werden.
+    Bei Gleichstand der Punkte gilt: Derjenge mit dem meisten Geld hat den Vorrang. D.h. wir brauchen als vorletzte Zeile pro Spieler ein Eingabefeld für das Geld.
+    Das Eingabefeld ist nur dann befüllbar, wenn die Summe der Punkte bei mindestens 2 Spielern gleich groß ist. Es werden auch dann nur die Eingabefelde dieser Spieler
+    beschreibbar aktiviert. 
+    Der Rang wird nach Befüllen dieser Felder dann automatisch ausgerechnet / ausgewertet.
+==> IMPLEMENTIERT
+
+4.) Mir gefällt die Log-Ausgabe auf der Console beim Wählen des Boards: Das Log sagt genau, welche Awards zur Verfügung stehen. 
+    Das hätte ich gerne auch bei den Milestones.
+
+5.) Weiter gehts: Für die statische Datenerfassung brauchen wir eine Erweiterung in der Funktion saveGameData(). 
+    Zunächst müssen in einer separaten Sektion des JSON Files die Namen der 3 Milestones und Awards ausgegeben werden - mit ID. 
+    Anschließend soll die Aufschlüsselung, welcher  Spieler bei welchem Milestone / Awards wieviele Punkte hat, als Unterpunkt von "milestones" und "awardPoints" 
+    ausgegeben werden. Das alles dient als Vorbereitung für eine spätere Speicherung der ganzen Daten in eine Datenbank.
+    Zudem brauchen wir im Game Parameters Bereich der HTML Seite eine smarte Eingabemöglichkeit für das Spiel-Datum. Das Datum soll mit in das JSON eingespeist werden.
+

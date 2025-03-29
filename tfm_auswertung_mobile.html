@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terraforming Mars VP Calculator (Mobile)</title>
+    <link rel="stylesheet" href="siemema-de.css">
+    <style>
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        table {
+            width: 100%;
+        }
+    </style>
+    <script src="tfm_auswertung_mobile.js" defer></script>
+</head>
+<body>
+    <header>Terraforming Mars VP Calculator (Mobile)</header>
+    <main>
+
+<!-- Legacy / Mobile Umschalter -->
+    	<div class="toggle-container">
+        	<span class="toggle-label">Desktop / Mobile</span>
+        	<label class="switch">
+            	<input type="checkbox" id="modeToggle" onchange="toggleMode()">
+            	<span class="slider"></span>
+        	</label>
+    	</div>
+
+        <div class="control-panel">
+            <div class="player-selection">
+                <span>Number of players:</span>
+                <label><input type="radio" name="player-count" value="1"> 1</label>
+                <label><input type="radio" name="player-count" value="2"> 2</label>
+                <label><input type="radio" name="player-count" value="3"> 3</label>
+                <label><input type="radio" name="player-count" value="4"> 4</label>
+                <label><input type="radio" name="player-count" value="5" checked> 5</label>
+            </div>
+            <button onclick="resetTable()">Reset</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th contenteditable="true" class="center-header">Player 1</th>
+                    <th contenteditable="true" class="center-header">Player 2</th>
+                    <th contenteditable="true" class="center-header">Player 3</th>
+                    <th contenteditable="true" class="center-header">Player 4</th>
+                    <th contenteditable="true" class="center-header">Player 5</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="category-header">Corporation</td>
+                    <td><select class="corporation-select"></select></td>
+                    <td><select class="corporation-select"></select></td>
+                    <td><select class="corporation-select"></select></td>
+                    <td><select class="corporation-select"></select></td>
+                    <td><select class="corporation-select"></select></td>
+                </tr>
+                <tr>
+                    <td class="category-header">Terraform Rating</td>
+                    <td><input type="number" class="player1" value="20" oninput="updateSum()"></td>
+                    <td><input type="number" class="player2" value="20" oninput="updateSum()"></td>
+                    <td><input type="number" class="player3" value="20" oninput="updateSum()"></td>
+                    <td><input type="number" class="player4" value="20" oninput="updateSum()"></td>
+                    <td><input type="number" class="player5" value="20" oninput="updateSum()"></td>
+                </tr>
+                <tr>
+                    <td class="category-header">Victory Points</td>
+                    <td><input type="number" class="player1" value="0" oninput="updateSum()"></td>
+                    <td><input type="number" class="player2" value="0" oninput="updateSum()"></td>
+                    <td><input type="number" class="player3" value="0" oninput="updateSum()"></td>
+                    <td><input type="number" class="player4" value="0" oninput="updateSum()"></td>
+                    <td><input type="number" class="player5" value="0" oninput="updateSum()"></td>
+                </tr>
+                <tr>
+                    <td class="category-header">Greeneries</td>
+                    <td><input type="number" class="player1" value="0" oninput="enforceNonNegative(this); updateSum()"></td>
+                    <td><input type="number" class="player2" value="0" oninput="enforceNonNegative(this); updateSum()"></td>
+                    <td><input type="number" class="player3" value="0" oninput="enforceNonNegative(this); updateSum()"></td>
+                    <td><input type="number" class="player4" value="0" oninput="enforceNonNegative(this); updateSum()"></td>
+                    <td><input type="number" class="player5" value="0" oninput="enforceNonNegative(this); updateSum()"></td>
+                </tr>
+                <tr>
+                    <td class="category-header">Cities</td>
+                    <td><input type="number" class="player1" value="0" oninput="enforceNonNegative(this); updateSum()"></td>
+                    <td><input type="number" class="player2" value="0" oninput="enforceNonNegative(this); updateSum()"></td>
+                    <td><input type="number" class="player3" value="0" oninput="enforceNonNegative(this); updateSum()"></td>
+                    <td><input type="number" class="player4" value="0" oninput="enforceNonNegative(this); updateSum()"></td>
+                    <td><input type="number" class="player5" value="0" oninput="enforceNonNegative(this); updateSum()"></td>
+                </tr>
+                <tr>
+                    <td class="category-header">Milestones</td>
+                    <td><input type="number" class="player1" value="0" oninput="enforceNonNegative(this); updateSum()"></td>
+                    <td><input type="number" class="player2" value="0" oninput="enforceNonNegative(this); updateSum()"></td>
+                    <td><input type="number" class="player3" value="0" oninput="enforceNonNegative(this); updateSum()"></td>
+                    <td><input type="number" class="player4" value="0" oninput="enforceNonNegative(this); updateSum()"></td>
+                    <td><input type="number" class="player5" value="0" oninput="enforceNonNegative(this); updateSum()"></td>
+                </tr>
+                <tr>
+                    <td class="category-header">Awards</td>
+                    <td><input type="number" class="player1" value="0" oninput="enforceNonNegative(this); updateSum()"></td>
+                    <td><input type="number" class="player2" value="0" oninput="enforceNonNegative(this); updateSum()"></td>
+                    <td><input type="number" class="player3" value="0" oninput="enforceNonNegative(this); updateSum()"></td>
+                    <td><input type="number" class="player4" value="0" oninput="enforceNonNegative(this); updateSum()"></td>
+                    <td><input type="number" class="player5" value="0" oninput="enforceNonNegative(this); updateSum()"></td>
+                </tr>
+                <tr>
+                    <td class="category-header">Sum</td>
+                    <td id="sum1" class="category-header">20</td>
+                    <td id="sum2" class="category-header">20</td>
+                    <td id="sum3" class="category-header">20</td>
+                    <td id="sum4" class="category-header">20</td>
+                    <td id="sum5" class="category-header">20</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <p><a href="index.html">Back to siemema.de</a></p>
+</body>
+</html>
