@@ -17,7 +17,7 @@ Depending on your chosen extensions, the dropdown menus for the corporations wil
 ![enriched version](./documentation/vp_calculator_enriched_demo.png)
 
 ## Mobile / Easy Version
-There is also a mobile version, which is in fact a very early version of this VP calculator. It's version where it all started. It does calculate the points as easy as the other version, but with no data enrichment. The data enriched version is for future projects. 
+There is also a mobile version, which is in fact a very early version of this VP calculator. It's the version where it all started. It does calculate the points as easy as the other version, but with no data enrichment. The data enriched version is for future projects. 
 
 ![mobile version](./documentation/vp_calculator_mobile.png)
 
