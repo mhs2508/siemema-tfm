@@ -9,4 +9,4 @@ There is also a mobile version, which is in fact a very early version of this VP
 
 # Screenshots
 
-![Mein Bild](./docuentation/vp_calculator_enriched.png)
+![Mein Bild](./documentation/vp_calculator_enriched.png)
