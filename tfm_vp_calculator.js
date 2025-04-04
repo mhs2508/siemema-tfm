@@ -549,9 +549,9 @@ function toggleMode() {
     const isChecked = document.getElementById("modeToggle").checked;
 
     if (isChecked) {
-        window.location.href = "tfm_auswertung_mobile.html"; // Legacy / Mobile-Version aufrufen
+        window.location.href = "tfm_vp_calculator_mobile.html"; // Legacy / Mobile-Version aufrufen
     } else {
-        window.location.href = "tfm_auswertung.html"; // Desktop-Version aufrufen
+        window.location.href = "tfm_vp_calculator.html"; // Desktop-Version aufrufen
     }
 }
 

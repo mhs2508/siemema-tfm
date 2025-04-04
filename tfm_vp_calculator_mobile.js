@@ -122,9 +122,9 @@ function toggleMode() {
     const isChecked = document.getElementById("modeToggle").checked;
 
     if (isChecked) {
-        window.location.href = "tfm_auswertung_mobile.html"; // Mobile-Version aufrufen
+        window.location.href = "tfm_vp_calculator_mobile.html"; // Mobile-Version aufrufen
     } else {
-        window.location.href = "tfm_auswertung.html"; // Desktop-Version aufrufen
+        window.location.href = "tfm_vp_calculator.html"; // Desktop-Version aufrufen
     }
 }
 
@@ -132,7 +132,7 @@ function toggleMode() {
 document.addEventListener("DOMContentLoaded", function() {
     const toggleSwitch = document.getElementById("modeToggle");
 
-    if (window.location.pathname.includes("tfm_auswertung_mobile.html")) {
+    if (window.location.pathname.includes("tfm_vp_calculator_mobile.html")) {
         toggleSwitch.checked = true; // Mobile-Modus aktiv
     } else {
         toggleSwitch.checked = false; // Desktop-Modus aktiv
