@@ -4,6 +4,7 @@
 
 1.) Änderung der Spielerzahl: Tabelle wird nur teilweise neu aufgebaut. Es bleiben die Trennstriche stehen. Auch sollten die Spalten dann etwas nach rechts wandern, orientiert 
     an rechten Rand der Tabelle.
+==> BEHOBEN
 
 2.) BUG: Beim Ändern der Spielerzahl verschwindet die Zeile mit den Award-Points. Die Punkte werden aber noch mit einberechnet, es ist nur die Anzeige, die fehlt.
 ==> BEHOBEN
