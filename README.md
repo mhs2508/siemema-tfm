@@ -21,6 +21,10 @@ There is also a mobile version, which is in fact a very early version of this VP
 
 ![mobile version](./documentation/vp_calculator_mobile.png)
 
+## Random Game Generator
+Also in this repo there is a random game generator. Did you ever have problems deciding which game parameters to choose for your next game? Let the randomizer decide!
+
+![mobile version](./documentation/random_game_generator.png)
 
 ## Plans for future improvement
 I plan to build a backend application which receives the game results and stores them into a database for later data analysis of my games. The "Save" button is just a prototype and still in the works. It basically downloads the result into a JSON file. But as I said, it's still in the works. And of course I will stay up to date with new extensions, boards and so on.
