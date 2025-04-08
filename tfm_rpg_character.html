@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Terraforming Mars RPG – Charakterbogen</title>
+  <link rel="stylesheet" href="siemema-de.css">
+  <style>
+    .section {
+      margin-bottom: 30px;
+    }
+    .fieldset-box {
+      border: 2px solid #f7b32b;
+      padding: 15px;
+      border-radius: 10px;
+      background-color: #2d2a28;
+      margin-top: 15px;
+    }
+    .fieldset-box legend {
+      color: #f7b32b;
+      font-weight: bold;
+    }
+    .checkbox-label {
+      display: inline-block;
+      margin-right: 10px;
+      color: #eaeaea;
+    }
+    .input-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+    textarea {
+      background-color: #222;
+      color: #eaeaea;
+      border: 1px solid #777;
+      padding: 10px;
+      font-size: 16px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>Terraforming Mars RPG – Charakterbogen</header>
+  <main>
+    <section class="section">
+      <h2>Charakterdaten</h2>
+      <div class="input-grid">
+        <div><label>Name<br><input type="text" name="name"></label></div>
+        <div><label>Alter<br><input type="text" name="age"></label></div>
+        <div><label>Geschlecht<br><input type="text" name="sex"></label></div>
+        <div><label>Beruf<br><input type="text" name="profession"></label></div>
+        <div><label>Persönlichkeit<br><input type="text" name="personality_tags"></label></div>
+      </div>
+      <label>Hintergrund<br><textarea name="background" rows="5"></textarea></label>
+    </section>
+
+    <section class="section">
+      <h2>Statistiken</h2>
+      <div class="input-grid">
+        <div><label>Scholarship<br><input type="number" min="0" max="4" name="scholarship"></label></div>
+        <div><label>Analysis<br><input type="number" min="0" max="4" name="analysis"></label></div>
+        <div><label>Interaction<br><input type="number" min="0" max="4" name="interaction"></label></div>
+        <div><label>Tech<br><input type="number" min="0" max="4" name="tech"></label></div>
+        <div><label>Body<br><input type="number" min="0" max="4" name="body"></label></div>
+        <div><label>Combat Ability<br><input type="number" min="0" max="4" name="combat_ability"></label></div>
+      </div>
+      <label>Fachgebiete / Spezialisierungen<br><textarea name="specialties" rows="3"></textarea></label>
+    </section>
+
+    <section class="section">
+      <h2>Fachgebiete (Fields of Expertise)</h2>
+      <table>
+        <thead>
+          <tr><th>Feld</th><th>Aktiv</th><th>Wert (0–8)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Electronics and Electricity</td><td><input type="checkbox" name="field_electronics"></td><td><input type="number" min="0" max="8" name="value_electronics"></td></tr>
+          <tr><td>Transportation</td><td><input type="checkbox" name="field_transportation"></td><td><input type="number" min="0" max="8" name="value_transportation"></td></tr>
+          <tr><td>Optics</td><td><input type="checkbox" name="field_optics"></td><td><input type="number" min="0" max="8" name="value_optics"></td></tr>
+          <tr><td>Orbital Operations</td><td><input type="checkbox" name="field_orbital"></td><td><input type="number" min="0" max="8" name="value_orbital"></td></tr>
+          <tr><td>Sensors</td><td><input type="checkbox" name="field_sensors"></td><td><input type="number" min="0" max="8" name="value_sensors"></td></tr>
+          <tr><td>Communications</td><td><input type="checkbox" name="field_communications"></td><td><input type="number" min="0" max="8" name="value_communications"></td></tr>
+          <tr><td>Mechanical Engineering</td><td><input type="checkbox" name="field_mechanical"></td><td><input type="number" min="0" max="8" name="value_mechanical"></td></tr>
+          <tr><td>Chemistry</td><td><input type="checkbox" name="field_chemistry"></td><td><input type="number" min="0" max="8" name="value_chemistry"></td></tr>
+          <tr><td>Microbial Genetics</td><td><input type="checkbox" name="field_microbial"></td><td><input type="number" min="0" max="8" name="value_microbial"></td></tr>
+          <tr><td>Plant Genetics</td><td><input type="checkbox" name="field_plant"></td><td><input type="number" min="0" max="8" name="value_plant"></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>Mentale Belastung</h2>
+      <fieldset class="fieldset-box">
+        <legend>Mental Stress</legend>
+        <label class="checkbox-label"><input type="checkbox" name="stress_1"> 1–2</label>
+        <label class="checkbox-label"><input type="checkbox" name="stress_2"> 3–4</label>
+        <label class="checkbox-label"><input type="checkbox" name="stress_3"> 5</label>
+        <label class="checkbox-label"><input type="checkbox" name="stress_4"> 6</label>
+      </fieldset>
+    </section>
+
+    <section class="section">
+      <h2>Vitalität</h2>
+      <fieldset class="fieldset-box">
+        <legend>Vitality</legend>
+        <label class="checkbox-label"><input type="checkbox" name="vital_1"> 1</label>
+        <label class="checkbox-label"><input type="checkbox" name="vital_2"> 2</label>
+        <label class="checkbox-label"><input type="checkbox" name="vital_3"> 2</label>
+        <label class="checkbox-label"><input type="checkbox" name="vital_4"> 3</label>
+        <label class="checkbox-label"><input type="checkbox" name="vital_5"> 3</label>
+        <label class="checkbox-label"><input type="checkbox" name="vital_6"> 4</label>
+        <label class="checkbox-label"><input type="checkbox" name="vital_7"> 5</label>
+        <label class="checkbox-label"><input type="checkbox" name="vital_8"> 6</label>
+      </fieldset>
+    </section>
+
+    <div class="button-container">
+      <button onclick="window.print()">Drucken</button>
+      <button type="reset">Zurücksetzen</button>
+    </div>
+  </main>
+</body>
+</html>
