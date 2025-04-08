@@ -2,11 +2,14 @@
 This is an open-source online fan project of the great board game Terraforming Mars and the upcoming Terraforming Mars RPG. It is not affiliated with FryxGames, Asmodee Digital, Shadowland Games or Steam in any way.
 
 ## About
-A Terraforming Mars Fan Project - a Victory Point Calculator for the board game and a prototype character sheet for the new Terraforming Mars RPG, based on the Quickstart Guide from [Backerkit](https://www.backerkit.com/c/projects/shadowlands-games/terraforming-mars-ttrpg).
+A Terraforming Mars Fan Project - a Victory Point Calculator for the board game and a prototype character sheet for the new Terraforming Mars RPG, based on the Quickstart Guide from [Backerkit](https://www.backerkit.com/c/projects/shadowlands-games/terraforming-mars-ttrpg). The terraforming Mars VP Calculator is made for calculation victory point as easy and fast as possible during an ongoing game. There are two versions:
 
-The terraforming Mars VP Calculator is made for calculation victory point as easy and fast as possible during an ongoing game. There are two versions:
+## RPG Character Sheet
+This is a very first version of a Terraforming Mars RPG character sheet. It contains all data from the quickstart guide so far. Printing to paper or PDF is the main purpose.
 
-## Enriched Version
+![rpg_charactersheet](./documentation/rpg_charactersheet.png)
+
+## VP Calculator - Enriched Version
 This is the enriched version with all official boards and the correct awards and milestones for these boards. It has all the corporations available packages in the resective extension packs, which can be chosen in the game parameters section. When chosen a board, the dropdown menus for the awards and milestones will be filled accordingyly. When selected Venus Next, the awards and milestones will be added with the Venus Next awards and milestones. 
 
 The milestones must first be chosen from the dropdown menu, then the checkbox of the resepctive player needs to be checked and 5 VP are added to this player. All other checkboxes in the same row are then disabled, so that only one player can have this milestone.
@@ -19,7 +22,7 @@ Depending on your chosen extensions, the dropdown menus for the corporations wil
 
 ![enriched version](./documentation/vp_calculator_enriched_demo.png)
 
-## Mobile / Easy Version
+## VP Calculator - Mobile / Easy Version
 There is also a mobile version, which is in fact a very early version of this VP calculator. It's the version where it all started. It does calculate the points as easy as the other version, but with no data enrichment. The data enriched version is for future projects. 
 
 ![mobile version](./documentation/vp_calculator_mobile.png)
