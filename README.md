@@ -1,5 +1,8 @@
 # siemema-tfm
-A Terraforming Mars Victory Point Calculator Project
+This is an open-source online fan project of the great board game Terraforming Mars and the upcoming Terraforming Mars RPG. It is not affiliated with FryxGames, Asmodee Digital, Shadowland Games or Steam in any way.
+
+## About
+A Terraforming Mars Fan Project - a Victory Point Calculator for the board game and a prototype character sheet for the new Terraforming Mars RPG, based on the Quickstart Guide from [Backerkit](https://www.backerkit.com/c/projects/shadowlands-games/terraforming-mars-ttrpg).
 
 The terraforming Mars VP Calculator is made for calculation victory point as easy and fast as possible during an ongoing game. There are two versions:
 
