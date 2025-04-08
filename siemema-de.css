@@ -380,6 +380,13 @@ input:checked + .slider:before {
     color: #008400;
 }
 
+textarea {
+    height: auto;
+    min-height: calc(1.2em * 15 + 10px); /* 15 Zeilen + etwas Puffer */
+    line-height: 1.2em;
+    resize: vertical; /* erlaubt Benutzeranpassung, kann auch auf 'none' gesetzt werden */
+  }
+
 /* Mobile Anpassungen */
 @media (max-width: 600px) {
     header {
@@ -429,7 +436,15 @@ input:checked + .slider:before {
       margin: 0 auto;
       padding: 0;
     }
-  
+    
+    textarea {
+        height: calc(1.2em * 15 + 10px) !important;
+        overflow: hidden !important;
+        resize: none !important;
+        border: none; /* optional: Rahmen entfernen für schöneren Ausdruck */
+        background: transparent;
+      }
+
     button, .button-container {
       display: none !important;
     }
