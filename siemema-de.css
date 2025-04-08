@@ -407,3 +407,34 @@ input:checked + .slider:before {
         padding: 8px 16px;
     }
 }
+
+@page {
+    size: A4 portrait;
+    margin: 20mm;
+  }
+
+  @media print {
+    html, body {
+      width: auto !important;
+      min-width: 0 !important;
+      max-width: 100% !important;
+      margin: 0 auto;
+      padding: 0;
+      zoom: 1; /* ggf. auf 0.9 oder 0.95 anpassen */
+    }
+  
+    main {
+      min-width: 0 !important;
+      max-width: 700px !important;
+      margin: 0 auto;
+      padding: 0;
+    }
+  
+    button, .button-container {
+      display: none !important;
+    }
+  
+    .control-panel {
+      display: none !important;
+    }
+  }
