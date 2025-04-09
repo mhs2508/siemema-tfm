@@ -8,7 +8,7 @@
 <body>
   <header>Terraforming Mars RPG – Character Sheet</header>
   <main>
-    <section class="section">
+    <section class="section fieldset-box">
       <h2>Character</h2>
       <div class="input-grid">
         <div><label>Name<br><input type="text" name="name"></label></div>
@@ -23,7 +23,7 @@
 
     </section>
 
-    <section class="section">
+    <section class="section fieldset-box">
         <h2>Statistics</h2>
         <table class="stats-table">
           <tr>
@@ -68,7 +68,7 @@
         </table>
       </section>   
 
-      <section class="section">
+      <section class="section fieldset-box">
         <h2>Fields of Expertise</h2>
         <table class="stats-table">
           <tr>
@@ -149,31 +149,31 @@
         </table>
     </section>
             
-    <section class="section">
-      <h2>Mental Stress</h2>
-      <fieldset class="fieldset-box">
-        <legend>Mental Stress</legend>
-        <label class="checkbox-label"><input type="checkbox" name="stress_1"> 1–2</label>
-        <label class="checkbox-label"><input type="checkbox" name="stress_2"> 3–4</label>
-        <label class="checkbox-label"><input type="checkbox" name="stress_3"> 5</label>
-        <label class="checkbox-label"><input type="checkbox" name="stress_4"> 6</label>
-      </fieldset>
-    </section>
-
-    <section class="section">
-      <h2>Vitality</h2>
-      <fieldset class="fieldset-box">
-        <legend>Vitality</legend>
-        <label class="checkbox-label"><input type="checkbox" name="vital_1"> 1</label>
-        <label class="checkbox-label"><input type="checkbox" name="vital_2"> 2</label>
-        <label class="checkbox-label"><input type="checkbox" name="vital_3"> 2</label>
-        <label class="checkbox-label"><input type="checkbox" name="vital_4"> 3</label>
-        <label class="checkbox-label"><input type="checkbox" name="vital_5"> 3</label>
-        <label class="checkbox-label"><input type="checkbox" name="vital_6"> 4</label>
-        <label class="checkbox-label"><input type="checkbox" name="vital_7"> 5</label>
-        <label class="checkbox-label"><input type="checkbox" name="vital_8"> 6</label>
-      </fieldset>
-    </section>
+    <section class="section fieldset-box">
+        <h2>Vital Signs</h2>
+      
+        <div class="fieldset-box-inner">
+            <h3 class="legend-heading">Mental Stress</h3>
+            <label class="checkbox-label"><input type="checkbox" name="stress_1"> 1–2</label>
+            <label class="checkbox-label"><input type="checkbox" name="stress_2"> 3–4</label>
+            <label class="checkbox-label"><input type="checkbox" name="stress_3"> 5</label>
+            <label class="checkbox-label"><input type="checkbox" name="stress_4"> 6</label>
+          </fieldset>
+        </div>
+      
+        <div class="fieldset-box-inner">
+            <h3 class="legend-heading">Vitality</h3>
+            <label class="checkbox-label"><input type="checkbox" name="vital_1"> 1</label>
+            <label class="checkbox-label"><input type="checkbox" name="vital_2"> 2</label>
+            <label class="checkbox-label"><input type="checkbox" name="vital_3"> 2</label>
+            <label class="checkbox-label"><input type="checkbox" name="vital_4"> 3</label>
+            <label class="checkbox-label"><input type="checkbox" name="vital_5"> 3</label>
+            <label class="checkbox-label"><input type="checkbox" name="vital_6"> 4</label>
+            <label class="checkbox-label"><input type="checkbox" name="vital_7"> 5</label>
+            <label class="checkbox-label"><input type="checkbox" name="vital_8"> 6</label>
+          </fieldset>
+        </div>
+      </section>
 
     <div class="button-container">
       <button onclick="window.print()">Print</button>

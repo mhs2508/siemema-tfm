@@ -417,6 +417,21 @@ textarea {
     font-weight: bold;
 }
 
+/* --- Für verschachtelte Boxen innerhalb fieldset-box --- */
+.fieldset-box-inner {
+    border: 2px solid #f7b32b;
+    background-color: #3b3a39; /* Etwas helleres Dunkelgrau */
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.legend-heading {
+    color: #f7b32b;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
 .checkbox-label {
     display: inline-block;
     margin-right: 10px;
