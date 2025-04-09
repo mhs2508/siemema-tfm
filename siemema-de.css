@@ -330,13 +330,25 @@ th[contenteditable="true"] {
 
 /* Stil für Eingabefelder in der Tabelle */
 input[type="number"] {
-    width: 100%;
+    width: auto;
+    max-width: 100%;
     padding: 5px;
     background-color: #222; /* Dunkler Hintergrund */
     color: #eaeaea; /* Weiße Schrift */
     border: 1px solid #777;
     text-align: center; /* Zahlen zentrieren */
     font-size: 16px;
+}
+
+/* Stil für Eingabefelder in dem Character Sheet */
+input[type="text"] {
+    background-color: #222;
+    color: #eaeaea;
+    border: 1px solid #777;
+    font-size: 16px;
+    padding: 5px;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 /* Entfernt die Standard-Nummern-Pfeile in Chrome & Edge */
@@ -386,6 +398,61 @@ textarea {
     line-height: 1.2em;
     resize: vertical; /* erlaubt Benutzeranpassung, kann auch auf 'none' gesetzt werden */
   }
+
+/* --- Ausgelagerte Styles aus tfm_rpg_character.html --- */
+.section {
+    margin-bottom: 30px;
+}
+
+.fieldset-box {
+    border: 2px solid #f7b32b;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #2d2a28;
+    margin-top: 15px;
+}
+
+.fieldset-box legend {
+    color: #f7b32b;
+    font-weight: bold;
+}
+
+.checkbox-label {
+    display: inline-block;
+    margin-right: 10px;
+    color: #eaeaea;
+}
+
+.input-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+textarea {
+    background-color: #222;
+    color: #eaeaea;
+    border: 1px solid #777;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type="number"].narrow {
+    width: 50px;
+    text-align: center;
+}
+
+table.stats-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table.stats-table td {
+    padding: 8px;
+    vertical-align: top;
+}
 
 /* Mobile Anpassungen */
 @media (max-width: 600px) {
