@@ -419,7 +419,7 @@ textarea {
 
 /* --- Für verschachtelte Boxen innerhalb fieldset-box --- */
 .fieldset-box-inner {
-    border: 2px solid #f7b32b;
+    border: 1px solid #f7b32b;
     background-color: #3b3a39; /* Etwas helleres Dunkelgrau */
     padding: 15px;
     border-radius: 8px;
@@ -443,6 +443,10 @@ textarea {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 15px;
 }
+
+.grid-span-3 {
+    grid-column: 1 / span 3;
+  }
 
 textarea {
     background-color: #222;
