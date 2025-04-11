@@ -24,7 +24,7 @@
 
     </section>
 
-    <section class="section fieldset-box">
+    <section class="section fieldset-box page-break">
         <h2>Statistics</h2>
         <p>Values 0 to 4, max. 13 points total. Each character has 4 specialties, granting a re-roll of any non-successful dice when checks fall into these specialties.</p>
         <table class="stats-table">
@@ -153,7 +153,7 @@
         </table>
     </section>
             
-    <section class="section fieldset-box">
+    <section class="section fieldset-box page-break">
         <h2>Vital Status</h2>
         <div class="fieldset-box-inner">
             <h3 class="legend-heading">Mental Stress</h3>
@@ -175,16 +175,16 @@
             <p>When all the mental stress boxes are marked, add one trauma point. At the end of each game session, roll 1d for each trauma point. 
                 Count the non-successes, ignore any 5 and count the 6 as double success. For each success resolve one failure. 
                 The number of remaining failures is the severity of the long-term trauma the characters gets.</p>
-            <input type="checkbox" name="trauma_1">
-            <input type="checkbox" name="trauma_2">
-            <input type="checkbox" name="trauma_3">
-            <input type="checkbox" name="trauma_4">
-            <input type="checkbox" name="trauma_5">
-            <input type="checkbox" name="trauma_6">
+            <label class="checkbox-label"><input type="checkbox" name="trauma_1"> 1d</label>
+            <label class="checkbox-label"><input type="checkbox" name="trauma_2"> 2d</label>
+            <label class="checkbox-label"><input type="checkbox" name="trauma_3"> 3d</label>
+            <label class="checkbox-label"><input type="checkbox" name="trauma_4"> 4d</label>
+            <label class="checkbox-label"><input type="checkbox" name="trauma_5"> 5d</label>
+            <label class="checkbox-label"><input type="checkbox" name="trauma_6"> 6d</label>
         </div>
     </section>
 
-    <section class="section fieldset-box">
+    <section class="section fieldset-box page-break">
         <h2>Combat</h2>
             <table class="stats-table">
                 <tr>
@@ -199,14 +199,14 @@
                         </label><br>
                     </td>
                     <td>
-                        <label>Damage<br>(Combat)<br>
-                            <input type="number" min="0" max="8" class="narrow" name="stat_damage">
-                        </label><br>
+                        <!-- add here later something like damage stats-->
                     </td>
                 </tr>
             </table>
             <div class="fieldset-box-inner">
                 <h3 class="legend-heading">Vitality</h3>
+                <p>Taking damage means injuries. Damage rolls need to be marked off here. The highest unmarked number in vitality determines the maximum dice number 
+                    a character can roll, because injuries affect concentration and physical activity.</p>
                 <label class="checkbox-label"><input type="checkbox" name="vital_1"> 1</label>
                 <label class="checkbox-label"><input type="checkbox" name="vital_2"> 2</label>
                 <label class="checkbox-label"><input type="checkbox" name="vital_3"> 2</label>
@@ -218,6 +218,8 @@
             </div>
             <div class="fieldset-box-inner">
                 <h3 class="incapitation-heading">Incapitation</h3>
+                <p>For each even number in a damage roll, mark off an incapitation box. If all incapitation boxes are marked off, the character can no longer 
+                    participate in the combat. In other words: You are knocked out, immobilized, overpowered etc.</p>
                 <label class="checkbox-label"><input type="checkbox" name="incapitation_1"> 1</label>
                 <label class="checkbox-label"><input type="checkbox" name="incapitation_2"> 2</label>
                 <label class="checkbox-label"><input type="checkbox" name="incapitation_3"> 3</label>
