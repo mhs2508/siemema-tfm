@@ -523,6 +523,22 @@ table.stats-table td {
       padding: 0;
     }
     
+    /* NEU: Seitenumbrüche */
+    .page-break {
+        break-before: page;
+        page-break-before: always;
+    }
+
+    .page-break-after {
+        break-after: page;
+        page-break-after: always;
+    }
+
+    .no-break-inside {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
     textarea {
         height: calc(1.2em * 15 + 10px) !important;
         overflow: hidden !important;
