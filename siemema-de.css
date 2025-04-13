@@ -166,11 +166,13 @@ select {
     color: #eaeaea;
     border: 1px solid #777;
     border-radius: 5px;
+    box-sizing: border-box;
 }
 
 /* Tabellenstil */
 table {
     width: 100%;
+    max-width: 1160px;
     border-collapse: collapse;
     margin: 20px 0;
     background-color: transparent;
@@ -179,7 +181,9 @@ table {
 
 th, td {
     padding: 10px;
-    text-align: left;
+    text-align: center;
+    vertical-align: middle;
+    word-break: keep-all;
     border-bottom: 1px solid #555;
 }
 
@@ -195,6 +199,45 @@ th[contenteditable="true"] {
     color: #f7b32b;
     cursor: text;
     text-align: center; /* Namen wieder zentrieren */
+}
+
+td[style*="opacity: 0"],
+th[style*="opacity: 0"] {
+    background: transparent !important;
+    border: none !important;
+}
+
+td:first-child, th:first-child {
+    width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+
+table.players-5 td:not(:first-child),
+table.players-5 th:not(:first-child) {
+    width: calc((100% - 200px) / 5);
+}
+
+table.players-4 td:not(:first-child),
+table.players-4 th:not(:first-child) {
+    width: calc((100% - 200px) / 4);
+}
+
+table.players-3 td:not(:first-child),
+table.players-3 th:not(:first-child) {
+    width: calc((100% - 200px) / 3);
+}
+
+table.players-2 td:not(:first-child),
+table.players-2 th:not(:first-child) {
+    width: calc((100% - 200px) / 2);
+}
+
+table.players-1 td:not(:first-child),
+table.players-1 th:not(:first-child) {
+    width: calc((100% - 200px));
 }
 
 /* Zeilen- und Spaltenüberschriften */
