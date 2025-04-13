@@ -391,51 +391,34 @@ function updatePlayerCount() {
     const selectedPlayers = parseInt(document.querySelector('input[name="player-count"]:checked').value);
     console.log(`Updating player count: ${selectedPlayers} players`);
 
-    const table = document.querySelector("table");
-    table.classList.remove("players-1", "players-2", "players-3", "players-4", "players-5");
-    table.classList.add(`players-${selectedPlayers}`);
-
-    // === KOPFZEILE anpassen ===
+    // Spieleranzahl in Kopfzeile anpassen
     document.querySelectorAll("thead th[contenteditable='true']").forEach((th, index) => {
         if (index < selectedPlayers) {
-            th.style.display = "table-cell";
-            th.style.opacity = "1";
-            th.style.pointerEvents = "auto";
+            th.style.display = "";
             th.textContent = `Player ${index + 1}`;
         } else {
-            th.style.display = "table-cell";
-            th.style.opacity = "0";
-            th.style.pointerEvents = "none";
+            th.style.display = "none";
         }
     });
 
-    // === TABELLENKÖRPER anpassen ===
-    table.querySelectorAll("tbody tr").forEach(row => {
+    // Tabelle anpassen und ueberfluessige Spalten verstecken und Trennstriche entfernen
+    document.querySelectorAll("tbody tr").forEach(row => {
         row.querySelectorAll("td").forEach((cell, index) => {
-            if (index === 0) {
-                // Erste Spalte (Kategorie) immer sichtbar
-                cell.style.display = "table-cell";
-                cell.style.opacity = "1";
-                cell.style.pointerEvents = "auto";
-                return;
-            }
-
+            if (index === 0) return; // Kategorie-Spalte bleibt immer sichtbar
             if (index <= selectedPlayers) {
-                cell.style.display = "table-cell";
-                cell.style.opacity = "1";
-                cell.style.pointerEvents = "auto";
+                cell.style.display = "";
+                cell.style.borderBottom = "1px solid #555"; // Standard-Grenzlinie neu setzen
             } else {
-                cell.style.display = "table-cell";
-                cell.style.opacity = "0";
-                cell.style.pointerEvents = "none";
+                cell.style.display = "none";
+                cell.style.borderBottom = "none"; // Trennstriche entfernen
             }
         });
     });
-
-    // Optional, aber hilft für Zentrierung im Container
-    table.style.marginLeft = "auto";
-    table.style.marginRight = "auto";
     
+    // Tabelle rechts ausrichten
+    document.querySelector("table").style.marginLeft = "auto";
+    document.querySelector("table").style.marginRight = "0";
+
     // Corporations aktualisieren
     updateCorporationOptions();
     document.querySelectorAll(".corporation-select").forEach((select, index) => {
@@ -459,22 +442,36 @@ function updatePlayerCount() {
         slider.style.backgroundColor = "#777";
     });
 
-    // Award-Punkte-Zellen
+    // Award-Punkte für überzählige Spieler verstecken, aber die Zeile erhalten
     document.querySelectorAll(".award-points").forEach((input, index) => {
         let playerIndex = index + 1;
         input.style.display = playerIndex <= selectedPlayers ? "" : "none";
         input.value = 0;
     });
 
-    // "Award Points"-Zeile bleibt sichtbar
+    // Stellt sicher, dass die "Award Points"-Zeile sichtbar bleibt
     document.querySelectorAll("tr").forEach(row => {
         if (row.querySelector(".award-points")) {
             row.style.display = "";
         }
     });
 
-    updateSum();
+    updateSum(); // Punkte neu berechnen
     console.log("Player count update complete.");
+}
+
+// Berechnet die Punkte aus den gewaehlten Milestones
+function updateMilestonePoints() {
+    let playerPoints = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+    document.querySelectorAll(".milestone-checkbox:checked").forEach(checkbox => {
+        let player = checkbox.getAttribute("data-player");
+        playerPoints[player] += 5;
+    });
+    for (let i = 1; i <= 5; i++) {
+        const inputField = document.querySelector(`.player${i}.milestone-points`);
+        if (inputField) inputField.value = playerPoints[i];
+    }
+    updateSum();
 }
 
 function updateMilestones() {
