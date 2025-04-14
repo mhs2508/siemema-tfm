@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Terraforming Mars RPG Mars Standard Time Tool</title>
+    <link rel="stylesheet" href="siemema-de.css" />
+</head>
+<body>
+    <h1>Mars Time Converter</h1>
+    <p>Convert Earth UTC to Mars Coordinated Time (MTC)</p>
+    <label for="earthTime">Earth UTC Time:</label>
+    <input type="time" id="earthTime" step="1" value="13:00:00" />
+    <button onclick="convertTime()">Convert</button>
+    <h2 id="convertedTime">Mars Time (MTC): --:--:--</h2>
+    <hr />
+ 
+    <h1>Convert Mars Time (MTC) to Earth UTC</h2>
+    <p>Convert Mars Coordinated Time (MTC) to Earth UTC</p>
+    <label for="marsTime">Mars MTC Time:</label>
+    <input type="time" id="marsTime" step="1" value="12:00:00" />
+    <button onclick="convertMTCtoUTC()">Convert</button>
+    <h2 id="convertedUTC">Earth Time (UTC): --:--:--</h2>
+
+    <hr />
+
+    <!-- h1>Sol Counter</h2>
+        <p>Sol since mission start (2000-01-06): <span id="solCount">--</span></p>
+    -->
+
+    <h1>Sol Counter</h2>
+    <label for="solStartDate">Start Date (UTC):</label>
+    <input type="date" id="solStartDate" value="2000-01-06" />
+    <button onclick="updateSolBase()">Set Start Date</button>
+    <p>Sol since selected date: <span id="solCount">--</span></p>
+
+    <hr />
+
+    <h2>Live Clock</h2>
+        <p>Earth UTC: <span id="utcClock">--:--:--</span></p>
+        <p>Mars MTC: <span id="mtcClock">--:--:--</span></p>
+
+    <div class="footer-links">
+        <a href="index.html">Back to siemema.de</a>
+        <a href="https://github.com/mhs2508/siemema-tfm/issues">Report Bug</a>
+    </div>
+    <script src="tfm_rpg_marstime.js"></script>
+</body>
+</html>
