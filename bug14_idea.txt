@@ -1,0 +1,37 @@
+/* Stil f端r Eingabefelder in der Tabelle */
+input[type="number"] {
+    width: auto;
+    max-width: 100%;
+    padding: 5px;
+    background-color: #222;
+    color: #eaeaea;
+    border: 1px solid #777;
+    text-align: center;
+    font-size: 16px;
+    display: block; /* das hier koennte helfen */
+    margin: 0 auto; /* das auch */
+}
+
+/* Stil f端r Eingabefelder in dem Character Sheet */
+input[type="text"] {
+    background-color: #222;
+    color: #eaeaea;
+    border: 1px solid #777;
+    font-size: 16px;
+    padding: 5px;
+    max-width: 100%;
+    box-sizing: border-box;
+    display: block; /* das wahrscheinlich nur fuer das RPG sheet */
+    margin: 0 auto; /* dito */
+}
+
+Ich brauche Hilfe beim Finetuning meiner HTML und CSS Dateien.
+
+Folgendes Problem ist zu lösen: Ich habe ein Web-Projekt mit mehreren HTML Dateien, die das gleiche Stylesheet nutzen. Letztens habe ich für meine Seite "VP Calculator" eine CSS Änderung durchgeführt, nun passen die Input-Elemente meiner Seite "RPG Character Sheet" nicht mehr.
+
+Ich lade dir meine Seite für das RPG Character Sheet hoch sowie zwei Versionen meiner CSS Datei:
+"siemema-de.css" ist meine Entwickungsversion, "siemema-de-live.css" ist meine produktive Version.
+
+Mit "siemema-de-live.css" sind die mittleren und rechten Input-Felder der Blöcke Statistics und Engeneering: Fields of Exoertise perfekt untereinander angeordnet.
+
+Mit der "siemema-de.css" sind die Text-Input-Felder der mittleren und rechten Spalte nach links verrückt, sie liegen also nicht mehr direkt unter dem Zahlen-Inputfeld.

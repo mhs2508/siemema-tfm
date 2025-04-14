@@ -184,17 +184,6 @@ function updateMilestoneDropdownState() {
     });
 }
 
-/*
-// Befuellt die Dropdown-Menues fuer die Corporation-Auswahl mit den verfuegbaren Corporations
-function populateCorporations() {
-    const selects = document.querySelectorAll(".corporation-select");
-    selects.forEach(select => {
-        select.innerHTML = "<option value=''>Choose Corporation</option>" + 
-            corporations.map(corp => `<option value="${corp}">${corp}</option>`).join('');
-    });
-}
-*/
-
 function enforceNonNegative(input) {
     if (parseInt(input.value) < 0 || isNaN(input.value)) {
         input.value = 0; // Setzt den Wert auf 0, wenn negativ oder ungueltig

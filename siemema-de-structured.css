@@ -197,20 +197,6 @@ th[contenteditable="true"] {
     text-align: center; /* Namen wieder zentrieren */
 }
 
-td[style*="opacity: 0"],
-th[style*="opacity: 0"] {
-    background: transparent !important;
-    border: none !important;
-}
-
-td:first-child, th:first-child {
-    width: 200px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    text-align: left;
-}
-
 /* Zeilen- und Spaltenüberschriften */
 .category-header {
     background-color: #444;
@@ -363,7 +349,7 @@ input[type="text"] {
     padding: 5px;
     max-width: 100%;
     box-sizing: border-box;
-}
+} 
 
 /* Entfernt die Standard-Nummern-Pfeile in Chrome & Edge */
 input[type="number"]::-webkit-inner-spin-button,
@@ -431,6 +417,18 @@ textarea {
     font-weight: bold;
 }
 
+.checkbox-label {
+    display: inline-block;
+    margin-right: 10px;
+    color: #eaeaea;
+}
+
+.input-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
 /* --- Für verschachtelte Boxen innerhalb fieldset-box --- */
 .fieldset-box-inner {
     border: 1px solid #f7b32b;
@@ -459,8 +457,8 @@ textarea {
 }
 
 .grid-span-3 {
-    grid-column: 1 / span 3;
-  }
+     grid-column: 1 / span 3;
+   }
 
 textarea {
     background-color: #222;
@@ -485,38 +483,6 @@ table.stats-table {
 table.stats-table td {
     padding: 8px;
     vertical-align: top;
-}
-
-/* Nur für tfm_rpg_character.html – Inputfelder untereinander korrekt ausrichten */
-table.stats-table td > label + input[type="text"] {
-    display: block;
-    margin-top: 5px;
-    width: 100%;
-}
-
-/* RPG Character Sheet – Drei gleich breite Spalten, linke Ausrichtung */
-body.rpg table.stats-table {
-    width: 100%;
-    table-layout: fixed;
-}
-
-body.rpg table.stats-table td {
-    width: 33.33%;
-    vertical-align: top;
-    text-align: left;
-    padding: 8px;
-}
-
-body.rpg table.stats-table td input[type="text"] {
-    display: block;
-    margin-top: 4px;
-    width: 100%;
-    max-width: 178.5px;
-    height: 30.5px;
-    padding: 5px;
-    font-size: 16px;
-    box-sizing: border-box;
-    text-align: left;
 }
 
 /* Mobile Anpassungen */
@@ -550,9 +516,9 @@ body.rpg table.stats-table td input[type="text"] {
 @page {
     size: A4 portrait;
     margin: 20mm;
-}
+  }
 
-@media print {
+  @media print {
     html, body {
       width: auto !important;
       min-width: 0 !important;
@@ -563,6 +529,13 @@ body.rpg table.stats-table td input[type="text"] {
     }
   
     main {
+      min-width: 0 !important;
+      max-width: 700px !important;
+      margin: 0 auto;
+      padding: 0;
+    }
+    
+        main {
       min-width: 0 !important;
       max-width: 700px !important;
       margin: 0 auto;
@@ -584,7 +557,7 @@ body.rpg table.stats-table td input[type="text"] {
         break-inside: avoid;
         page-break-inside: avoid;
     }
-
+    
     textarea {
         height: calc(1.2em * 15 + 10px) !important;
         overflow: hidden !important;
@@ -600,4 +573,4 @@ body.rpg table.stats-table td input[type="text"] {
     .control-panel {
       display: none !important;
     }
-}
+  }
