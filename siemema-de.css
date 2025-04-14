@@ -376,9 +376,10 @@ input[type="number"]::-webkit-outer-spin-button {
     margin: 0;
 }
 
-/* Entfernt die Standard-Pfeile in Firefox */
 input[type="number"] {
+    appearance: textfield;
     -moz-appearance: textfield;
+    -webkit-appearance: none;
 }
 
 input:checked + .slider {
@@ -415,7 +416,7 @@ textarea {
     min-height: calc(1.2em * 15 + 10px); /* 15 Zeilen + etwas Puffer */
     line-height: 1.2em;
     resize: vertical; /* erlaubt Benutzeranpassung, kann auch auf 'none' gesetzt werden */
-  }
+}
 
 /* --- Ausgelagerte Styles aus tfm_rpg_character.html --- */
 .section {
@@ -433,6 +434,12 @@ textarea {
 .fieldset-box legend {
     color: #f7b32b;
     font-weight: bold;
+}
+
+.input-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
 }
 
 /* --- Für verschachtelte Boxen innerhalb fieldset-box --- */
@@ -454,12 +461,6 @@ textarea {
     display: inline-block;
     margin-right: 10px;
     color: #eaeaea;
-}
-
-.input-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
 }
 
 .grid-span-3 {
