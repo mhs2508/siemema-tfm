@@ -166,11 +166,13 @@ select {
     color: #eaeaea;
     border: 1px solid #777;
     border-radius: 5px;
+    box-sizing: border-box;
 }
 
 /* Tabellenstil */
 table {
     width: 100%;
+    max-width: 1160px;
     border-collapse: collapse;
     margin: 20px 0;
     background-color: transparent;
@@ -179,7 +181,9 @@ table {
 
 th, td {
     padding: 10px;
-    text-align: left;
+    text-align: center;
+    vertical-align: middle;
+    word-break: keep-all;
     border-bottom: 1px solid #555;
 }
 
