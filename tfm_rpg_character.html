@@ -25,25 +25,25 @@
     </section>
 
     <section class="section fieldset-box page-break">
-        <h2>Statistics</h2>
+        <h2>Abilities</h2>
         <p>Values 0 to 4, max. 13 points total. Each character has 4 specialties, granting a re-roll of any non-successful dice when checks fall into these specialties.</p>
         <table class="stats-table">
           <tr>
             <td>
               <label>Scholarship<br>
-                <input type="number" min="0" max="4" class="narrow" name="stat_scholarship">
+                <input type="number" min="0" max="4" value="0" class="narrow" name="ability_scholarship">
               </label><br>
               <input type="text" name="spec_scholarship" placeholder="Specialties">
             </td>
             <td>
               <label>Analysis<br>
-                <input type="number" min="0" max="4" class="narrow" name="stat_analysis">
+                <input type="number" min="0" max="4" value="0" class="narrow" name="ability_analysis">
               </label><br>
               <input type="text" name="spec_analysis" placeholder="Specialties">
             </td>
             <td>
                 <label>Interaction<br>
-                  <input type="number" min="0" max="4" class="narrow" name="stat_interaction">
+                  <input type="number" min="0" max="4" value="0" class="narrow" name="ability_interaction">
                 </label><br>
                 <input type="text" name="spec_interaction" placeholder="Specialties">
               </td>
@@ -51,19 +51,19 @@
           <tr>
             <td>
               <label>Tech<br>
-                <input type="number" min="0" max="4" class="narrow" name="stat_tech">
+                <input type="number" min="0" max="4" value="0" class="narrow" name="ability_tech">
               </label><br>
               <input type="text" name="spec_tech" placeholder="Specialties">
             </td>
             <td>
                 <label>Body<br>
-                  <input type="number" min="0" max="4" class="narrow" name="stat_body">
+                  <input type="number" min="0" max="4" value="0" class="narrow" name="ability_body">
                 </label><br>
                 <input type="text" name="spec_body" placeholder="Specialties">
               </td>
               <td>
                 <label>Combat Ability<br>
-                  <input type="number" min="0" max="4" class="narrow" name="stat_combat">
+                  <input type="number" min="0" max="4" value="0" class="narrow" name="ability_combat">
                 </label>
               </td>
           </tr>
@@ -79,19 +79,19 @@
             <td>
               <label>Chemistry<br>
                 <input type="checkbox" name="field_chemistry">
-                <input type="number" min="0" max="8" class="narrow" name="value_chemistry">
+                <input type="number" min="0" max="8" value="0" class="narrow" name="value_chemistry">
               </label>
             </td>
             <td>
               <label>Communications<br>
                 <input type="checkbox" name="field_communications">
-                <input type="number" min="0" max="8" class="narrow" name="value_communications">
+                <input type="number" min="0" max="8" value="0" class="narrow" name="value_communications">
               </label>
             </td>
             <td>
               <label>Electronics and Electricity<br>
                 <input type="checkbox" name="field_electronics">
-                <input type="number" min="0" max="8" class="narrow" name="value_electronics">
+                <input type="number" min="0" max="8" value="0" class="narrow" name="value_electronics">
               </label>
             </td>
           </tr>
@@ -99,19 +99,19 @@
             <td>
               <label>Mechanical Engineering<br>
                 <input type="checkbox" name="field_mechanical">
-                <input type="number" min="0" max="8" class="narrow" name="value_mechanical">
+                <input type="number" min="0" max="8" value="0" class="narrow" name="value_mechanical">
               </label>
             </td>
             <td>
               <label>Microbial Genetics<br>
                 <input type="checkbox" name="field_microbial">
-                <input type="number" min="0" max="8" class="narrow" name="value_microbial">
+                <input type="number" min="0" max="8" value="0" class="narrow" name="value_microbial">
               </label>
             </td>
             <td>
               <label>Optics<br>
                 <input type="checkbox" name="field_optics">
-                <input type="number" min="0" max="8" class="narrow" name="value_optics">
+                <input type="number" min="0" max="8" value="0" class="narrow" name="value_optics">
               </label>
             </td>
           </tr>
@@ -119,19 +119,19 @@
             <td>
               <label>Orbital Operations<br>
                 <input type="checkbox" name="field_orbital">
-                <input type="number" min="0" max="8" class="narrow" name="value_orbital">
+                <input type="number" min="0" max="8" value="0" class="narrow" name="value_orbital">
               </label>
             </td>
             <td>
               <label>Plant Genetics<br>
                 <input type="checkbox" name="field_plant">
-                <input type="number" min="0" max="8" class="narrow" name="value_plant">
+                <input type="number" min="0" max="8" value="0" class="narrow" name="value_plant">
               </label>
             </td>
             <td>
               <label>Robotics<br>
                 <input type="checkbox" name="field_robotics">
-                <input type="number" min="0" max="8" class="narrow" name="value_robotics">
+                <input type="number" min="0" max="8" value="0" class="narrow" name="value_robotics">
               </label>
             </td>
           </tr>
@@ -139,13 +139,13 @@
             <td>
               <label>Sensors<br>
                 <input type="checkbox" name="field_sensors">
-                <input type="number" min="0" max="8" class="narrow" name="value_sensors">
+                <input type="number" min="0" max="8" value="0" class="narrow" name="value_sensors">
               </label>
             </td>
             <td>
               <label>Transportation<br>
                 <input type="checkbox" name="field_transportation">
-                <input type="number" min="0" max="8" class="narrow" name="value_transportation">
+                <input type="number" min="0" max="8" value="0" class="narrow" name="value_transportation">
               </label>
             </td>
             <td></td>
@@ -187,21 +187,23 @@
     <section class="section fieldset-box page-break">
         <h2>Combat</h2>
             <table class="stats-table">
-                <tr>
-                    <td>
-                        <label>Initiative for Attack<br>(Body+Combat)<br>
-                            <input type="number" min="0" max="8" class="narrow" name="stat_initiative_attack">
-                        </label><br>
-                    </td>
-                    <td>
-                        <label>Initiative<br>(Body x2)<br>
-                            <input type="number" min="0" max="8" class="narrow" name="stat_initiative_normal">
-                        </label><br>
-                    </td>
-                    <td>
-                        <!-- add here later something like damage stats-->
-                    </td>
-                </tr>
+              <tr>
+                <td>
+                  <label>Initiative for Attack<br>(Body+Combat)<br>
+                      <input type="number" min="0" max="8" value="0" class="narrow" name="combat_initiative_attack">
+                  </label><br>
+                </td>
+                <td>
+                  <label>Initiative<br>(Body x2)<br>
+                      <input type="number" min="0" max="8" value="0" class="narrow" name="combat_initiative_normal">
+                  </label><br>
+                </td>
+                <td>
+                  <label>OCR<br>(Body+Combat)<br>
+                    <input type="number" min="0" max="8" value="0" class="narrow" name="combat_ocr">
+                </label><br>
+                </td>
+              </tr>
             </table>
             <div class="fieldset-box-inner">
                 <h3 class="legend-heading">Vitality</h3>
