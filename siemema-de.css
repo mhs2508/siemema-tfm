@@ -547,9 +547,9 @@ table.stats-table td {
 @page {
     size: A4 portrait;
     margin: 20mm;
-  }
+}
 
-  @media print {
+@media print {
     html, body {
       width: auto !important;
       min-width: 0 !important;
@@ -597,4 +597,4 @@ table.stats-table td {
     .control-panel {
       display: none !important;
     }
-  }
+}
