@@ -36,8 +36,14 @@
     <hr />
 
     <h2>Live Clock</h2>
-        <p>Earth UTC: <span id="utcClock">--:--:--</span></p>
-        <p>Mars MTC: <span id="mtcClock">--:--:--</span></p>
+        <p>Based on official NASA reference to January 6th, 2000 12:00 UTC</p>
+        <div style="display: grid; grid-template-columns: auto 1fr; gap: 0.5em; line-height: 1.6;">
+            <div><strong>Earth UTC:</strong></div>
+            <div><span id="utcDate">--</span><br><span id="utcClock">--:--:--</span></div>
+          
+            <div><strong>Mars MTC:</strong></div>
+            <div><span id="marsDate">--</span><br><span id="mtcClock">--:--:--</span></div>
+        </div>
 
     <div class="footer-links">
         <a href="index.html">Back to siemema.de</a>
