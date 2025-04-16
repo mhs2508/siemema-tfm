@@ -128,16 +128,30 @@ function updateMilestoneCheckboxes(milestoneIndex) {
 
 // Stellt sicher, dass nur ein Spieler pro Milestone die Checkbox aktivieren kann
 function validateMilestoneSelection(milestoneIndex) {
-    document.querySelectorAll(`.milestone-checkbox[data-milestone="${milestoneIndex}"]`).forEach(checkbox => {
+    const checkboxes = document.querySelectorAll(`.milestone-checkbox[data-milestone="${milestoneIndex}"]`);
+    let selectedPlayer = null;
+
+    checkboxes.forEach(checkbox => {
         if (checkbox.checked) {
-            let player = checkbox.getAttribute("data-player"); // Richtigen Player auslesen
-            document.querySelectorAll(`.milestone-checkbox[data-milestone="${milestoneIndex}"]`).forEach(otherCheckbox => {
-                if (otherCheckbox.getAttribute("data-player") !== player) {
-                    otherCheckbox.checked = false;
-                }
-            });
+            selectedPlayer = checkbox.getAttribute("data-player");
         }
     });
+
+    checkboxes.forEach(checkbox => {
+        const player = checkbox.getAttribute("data-player");
+        if (selectedPlayer) {
+            if (player !== selectedPlayer) {
+                checkbox.disabled = true;
+                checkbox.checked = false; // Sicherheitshalber deaktivieren
+            } else {
+                checkbox.disabled = false;
+            }
+        } else {
+            // Wenn keiner mehr gewählt ist, alles wieder freigeben
+            checkbox.disabled = false;
+        }
+    });
+
     updateMilestonePoints();
 }
 
