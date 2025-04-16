@@ -194,6 +194,150 @@ function convertEarthDateToMars() {
     `Marsdatum: ${marsDate.day}. ${marsDate.month} ${marsDate.year}`;
 }
 
+// Funktion für Visual Mars Clock
+function drawMarsClock() {
+  const canvas = document.getElementById("marsClock");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+
+  const now = new Date();
+  const msd = getMSD(now);
+  if (!msd || isNaN(msd)) return;
+
+  const mtcFloat = (msd % 1) * 24;
+  const hours = mtcFloat;
+  const minutes = (hours % 1) * 60;
+  const seconds = (minutes % 1) * 60;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const cx = canvas.width / 2;
+  const cy = canvas.height / 2;
+  const radius = cx - 10;
+
+  // Hintergrundring
+  ctx.beginPath();
+  ctx.arc(cx, cy, radius, 0, 2 * Math.PI);
+  ctx.strokeStyle = "#ff4500";
+  ctx.lineWidth = 4;
+  ctx.stroke();
+
+  // Stundenmarkierungen (24)
+  ctx.fillStyle = "#ffa500";
+  ctx.font = "10px sans-serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  for (let i = 0; i < 24; i++) {
+    const angle = (i / 24) * 2 * Math.PI - Math.PI / 2;
+    const x = cx + Math.cos(angle) * (radius - 15);
+    const y = cy + Math.sin(angle) * (radius - 15);
+    ctx.fillText(i.toString(), x, y);
+  }
+
+  // Label hinzufügen
+  ctx.font = "bold 10px sans-serif";
+  ctx.fillStyle = "#ff6347";
+  ctx.fillText("MTC", cx, cy - radius + 30);
+
+  // Zeiger zeichnen
+  const drawHand = (angle, length, color, width) => {
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(
+      cx + Math.cos(angle - Math.PI / 2) * length,
+      cy + Math.sin(angle - Math.PI / 2) * length
+    );
+    ctx.strokeStyle = color;
+    ctx.lineWidth = width;
+    ctx.stroke();
+  };
+
+  drawHand((hours / 24) * 2 * Math.PI, radius * 0.5, "#ff6347", 4); // Stunden
+  drawHand((minutes / 60) * 2 * Math.PI, radius * 0.7, "#ffa07a", 2); // Minuten
+  drawHand((seconds / 60) * 2 * Math.PI, radius * 0.85, "#f0e68c", 1); // Sekunden
+
+  // Marsdatum in die Mitte schreiben
+  const marsDate = getMarsDateFromUTC(now);
+  ctx.fillStyle = "#ff6347";
+  ctx.font = "bold 13px sans-serif";
+  ctx.fillText(`${marsDate.day}. ${marsDate.month}`, cx, cy + 12);
+  ctx.font = "12px sans-serif";
+  ctx.fillText(`${marsDate.year}`, cx, cy + 28);
+}
+
+function drawEarthClock() {
+  const canvas = document.getElementById("earthClock");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+
+  const now = new Date();
+  const hours = now.getUTCHours();
+  const minutes = now.getUTCMinutes();
+  const seconds = now.getUTCSeconds();
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const cx = canvas.width / 2;
+  const cy = canvas.height / 2;
+  const radius = cx - 10;
+
+  // Hintergrundring
+  ctx.beginPath();
+  ctx.arc(cx, cy, radius, 0, 2 * Math.PI);
+  ctx.strokeStyle = "#3399ff";
+  ctx.lineWidth = 4;
+  ctx.stroke();
+
+  // Stundenmarkierungen (24)
+  ctx.fillStyle = "#00ff66";
+  ctx.font = "10px sans-serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  for (let i = 0; i < 24; i++) {
+    const angle = (i / 24) * 2 * Math.PI - Math.PI / 2;
+    const x = cx + Math.cos(angle) * (radius - 15);
+    const y = cy + Math.sin(angle) * (radius - 15);
+    ctx.fillText(i.toString(), x, y);
+  }
+
+  // Label hinzufügen
+  ctx.font = "bold 10px sans-serif";
+  ctx.fillStyle = "#00ff66";
+  ctx.fillText("UTC", cx, cy - radius + 30);
+
+  // Zeiger zeichnen
+  const drawHand = (angle, length, color, width) => {
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(
+      cx + Math.cos(angle - Math.PI / 2) * length,
+      cy + Math.sin(angle - Math.PI / 2) * length
+    );
+    ctx.strokeStyle = color;
+    ctx.lineWidth = width;
+    ctx.stroke();
+  };
+
+  drawHand((hours / 24) * 2 * Math.PI, radius * 0.5, "#3399ff", 4); // Stunden
+  drawHand((minutes / 60) * 2 * Math.PI, radius * 0.7, "#66ccff", 2); // Minuten
+  drawHand((seconds / 60) * 2 * Math.PI, radius * 0.85, "#aaddff", 1); // Sekunden
+
+  // Erd-Datum in die Mitte schreiben
+  const months = [
+    "Januar", "Februar", "März", "April", "Mai", "Juni",
+    "Juli", "August", "September", "Oktober", "November", "Dezember"
+  ];
+  const day = now.getUTCDate();
+  const month = months[now.getUTCMonth()];
+  const year = now.getUTCFullYear();
+
+  ctx.fillStyle = "#3399ff";
+  ctx.font = "bold 13px sans-serif";
+  ctx.fillText(`${day}. ${month}`, cx, cy + 12);
+  ctx.font = "12px sans-serif";
+  ctx.fillText(`${year}`, cx, cy + 28);
+}
+
 // Start the live clock
 setInterval(updateLiveClocks, 1000);
 updateLiveClocks();
@@ -201,4 +345,5 @@ setInterval(updateSolCounter, 1000);
 updateSolCounter();
 setInterval(updateMarsDateDisplay, 1000);
 updateMarsDateDisplay();
-  
+setInterval(drawMarsClock, 1000);
+drawMarsClock();

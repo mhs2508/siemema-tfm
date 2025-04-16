@@ -45,10 +45,28 @@
             <div><span id="marsDate">--</span><br><span id="mtcClock">--:--:--</span></div>
         </div>
 
+    <hr />
+
+    <h2>Visual Mars Clock</h2>
+    <div style="display: flex; justify-content: left; gap: 2em;">
+        <canvas id="earthClock" width="200" height="200" style="background: #0a1a2f; border-radius: 50%; box-shadow: 0 0 10px #3399ff;"></canvas>
+        <canvas id="marsClock" width="200" height="200" style="background: #1a1a1a; border-radius: 50%; box-shadow: 0 0 10px #ff4500;"></canvas>
+    </div>
+
     <div class="footer-links">
         <a href="index.html">Back to siemema.de</a>
         <a href="https://github.com/mhs2508/siemema-tfm/issues">Report Bug</a>
     </div>
     <script src="tfm_rpg_marstime.js"></script>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            drawMarsClock();
+            drawEarthClock();
+            setInterval(drawMarsClock, 1000);
+            setInterval(drawEarthClock, 1000);
+        });
+    </script>
+      
 </body>
 </html>
