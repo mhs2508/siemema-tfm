@@ -236,7 +236,7 @@ function drawMarsClock() {
 
   // Label hinzufügen
   ctx.font = "bold 10px sans-serif";
-  ctx.fillStyle = "#ff6347";
+  ctx.fillStyle = "#ffa500";
   ctx.fillText("MTC", cx, cy - radius + 30);
 
   // Zeiger zeichnen
