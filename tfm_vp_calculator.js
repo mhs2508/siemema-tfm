@@ -445,6 +445,15 @@ function updatePlayerCount() {
         }
     });
 
+    // Award-Slider Max-Werte setzen (kein 2nd Place bei < 3 Spielern)
+    const sliderMaxValue = selectedPlayers >= 3 ? 2 : 1;
+    document.querySelectorAll(".award-slider").forEach(slider => {
+        slider.max = sliderMaxValue;
+        if (parseInt(slider.value) > sliderMaxValue) {
+            slider.value = 0; // Zurücksetzen falls ungültig
+        }
+    });
+
     updateSum(); // Punkte neu berechnen
     console.log("Player count update complete.");
 }
