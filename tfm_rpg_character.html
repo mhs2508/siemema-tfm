@@ -21,11 +21,12 @@
       <br>
       <label for="background">Character Background:</label><br>
       <textarea id="background" name="background" rows="15" placeholder="Write the character background here..."></textarea>
+      <div class="textarea-print" id="background-print"></div>
 
     </section>
 
     <section class="section fieldset-box page-break">
-        <h2>Abilities</h2>
+        <h2 id="abilities-header">Abilities (0)</h2>
         <p>Values 0 to 4, max. 13 points total. Each character has 4 specialties, granting a re-roll of any non-successful dice when checks fall into these specialties.</p>
         <table class="stats-table">
           <tr>
@@ -71,7 +72,7 @@
     </section>   
 
     <section class="section fieldset-box">
-        <h2>Engineering: Fields of Expertise</h2>
+        <h2 id="foe-header">Engineering: Fields of Expertise (0)</h2>
         <p>Values 0 to 8. When creating a character a player may decide to trade 1 ability point into 10 points of FoE (with GM permission even 2 for 20).<br>
            After rolling a check, distribute successes among <b>reliability</b> and <b>power/range</b>, granting 1 point of quality level.</p>
         <table class="stats-table">
@@ -97,6 +98,12 @@
           </tr>
           <tr>
             <td>
+              <label>Geology<br>
+                <input type="checkbox" name="field_geology">
+                <input type="number" min="0" max="8" value="0" class="narrow" name="value_geology">
+              </label>
+            </td>
+            <td>
               <label>Mechanical Engineering<br>
                 <input type="checkbox" name="field_mechanical">
                 <input type="number" min="0" max="8" value="0" class="narrow" name="value_mechanical">
@@ -108,14 +115,14 @@
                 <input type="number" min="0" max="8" value="0" class="narrow" name="value_microbial">
               </label>
             </td>
+          </tr>
+          <tr>
             <td>
               <label>Optics<br>
                 <input type="checkbox" name="field_optics">
                 <input type="number" min="0" max="8" value="0" class="narrow" name="value_optics">
               </label>
             </td>
-          </tr>
-          <tr>
             <td>
               <label>Orbital Operations<br>
                 <input type="checkbox" name="field_orbital">
@@ -128,14 +135,14 @@
                 <input type="number" min="0" max="8" value="0" class="narrow" name="value_plant">
               </label>
             </td>
+          </tr>
+          <tr>
             <td>
               <label>Robotics<br>
                 <input type="checkbox" name="field_robotics">
                 <input type="number" min="0" max="8" value="0" class="narrow" name="value_robotics">
               </label>
             </td>
-          </tr>
-          <tr>
             <td>
               <label>Sensors<br>
                 <input type="checkbox" name="field_sensors">

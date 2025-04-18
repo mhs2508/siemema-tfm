@@ -7,10 +7,15 @@ document.addEventListener("DOMContentLoaded", function () {
     inputs.forEach((input) => {
       if (input.type === "checkbox" || input.type === "radio") {
         input.checked = false;
+      } else if (input.type === "number") {
+        input.value = input.defaultValue || 0;
       } else {
         input.value = "";
       }
     });
+    updateAbilitySum();
+    updateFoESum();
+    updateCombatFields();
   });
 
   // Export Button
@@ -71,7 +76,65 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         });
       }
+      updateAbilitySum();
+      updateFoESum();
+      updateCombatFields();
     };
     reader.readAsText(file);
   });
+
+  // Update Ability Points Sum
+  function updateAbilitySum() {
+    const abilityFields = [
+      "ability_scholarship",
+      "ability_analysis",
+      "ability_interaction",
+      "ability_tech",
+      "ability_body",
+      "ability_combat"
+    ];
+    let sum = 0;
+    abilityFields.forEach((name) => {
+      const el = document.querySelector(`[name="${name}"]`);
+      sum += parseInt(el.value) || 0;
+    });
+    const header = document.querySelector("#abilities-header");
+    header.textContent = `Abilities (${sum})`;
+  }
+
+  // Update Fields of Expertise Sum
+  function updateFoESum() {
+    const foeFields = document.querySelectorAll("input[name^='value_']");
+    let sum = 0;
+    foeFields.forEach((el) => {
+      sum += parseInt(el.value) || 0;
+    });
+    const header = document.querySelector("#foe-header");
+    header.textContent = `Engineering: Fields of Expertise (${sum})`;
+  }
+
+  // Update Combat auto-calculation
+  function updateCombatFields() {
+    const body = parseInt(document.querySelector('[name="ability_body"]').value) || 0;
+    const combat = parseInt(document.querySelector('[name="ability_combat"]').value) || 0;
+    document.querySelector('[name="combat_initiative_attack"]').value = body + combat;
+    document.querySelector('[name="combat_initiative_normal"]').value = body * 2;
+    document.querySelector('[name="combat_ocr"]').value = body + combat;
+  }
+
+  // Hook listeners to update dynamically
+  document.querySelectorAll("input[name^='ability_']").forEach((el) => {
+    el.addEventListener("input", () => {
+      updateAbilitySum();
+      updateCombatFields();
+    });
+  });
+  document.querySelectorAll("input[name^='value_']").forEach((el) => {
+    el.addEventListener("input", updateFoESum);
+  });
+
+  // Initial calculation
+  updateAbilitySum();
+  updateFoESum();
+  updateCombatFields();
 });

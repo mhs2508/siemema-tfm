@@ -591,12 +591,15 @@ body.rpg table.stats-table td input[type="text"] {
     }
 
     textarea {
-        height: calc(1.2em * 15 + 10px) !important;
-        overflow: hidden !important;
+        height: auto !important; /* passt sich dem Inhalt an */
+        overflow: visible !important; /* zeigt gesamten Inhalt */
         resize: none !important;
-        border: none; /* optional: Rahmen entfernen für schöneren Ausdruck */
+        border: none;
         background: transparent;
-      }
+        white-space: pre-wrap; /* behält Zeilenumbrüche */
+        font-family: inherit;
+        box-shadow: none; /* optional: Druck ohne Schatten */
+    }
 
     button, .button-container {
       display: none !important;
