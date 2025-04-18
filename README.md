@@ -5,9 +5,10 @@ This is an open-source online fan project of the great board game Terraforming M
 A Terraforming Mars Fan Project - a Victory Point Calculator for the board game and a prototype character sheet for the new Terraforming Mars RPG, based on the Quickstart Guide from [Backerkit](https://www.backerkit.com/c/projects/shadowlands-games/terraforming-mars-ttrpg). The terraforming Mars VP Calculator is made for calculation victory point as easy and fast as possible during an ongoing game. There are two versions available: The enriched version and the mobile / easy version.
 
 ## RPG Character Sheet
-This is a very first version of a Terraforming Mars RPG character sheet. It contains all data from the quickstart guide so far. Printing to paper or PDF is the main purpose.
+This is a very first version of a Terraforming Mars RPG character sheet. It contains all data from the quickstart guide so far. Printing to paper or PDF is the main purpose. Also, there is an import / export function to save your character sheet as a JSON file on your hard drive or load it again from your drive. I also added two custom fields of expertise ;-)
 
-![rpg_charactersheet](./documentation/rpg_charactersheet.png)
+![rpg_charactersheet_1](./documentation/rpg_charactersheet_1.png)
+![rpg_charactersheet_2](./documentation/rpg_charactersheet_2.png)
 
 ## VP Calculator - Enriched Version
 This is the enriched version with all official boards and the correct awards and milestones for these boards. It has all the corporations available packages in the resective extension packs, which can be chosen in the game parameters section. When chosen a board, the dropdown menus for the awards and milestones will be filled accordingyly. When selected Venus Next, the awards and milestones will be added with the Venus Next awards and milestones. 
