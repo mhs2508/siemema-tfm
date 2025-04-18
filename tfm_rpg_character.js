@@ -13,6 +13,13 @@ document.addEventListener("DOMContentLoaded", function () {
         input.value = "";
       }
     });
+
+    // Reset editable FoE labels to default
+    const customFoE1 = document.querySelector('.editable-label[data-placeholder="Custom FoE #1"]');
+    const customFoE2 = document.querySelector('.editable-label[data-placeholder="Custom FoE #2"]');
+    if (customFoE1) customFoE1.innerText = "Custom FoE #1";
+    if (customFoE2) customFoE2.innerText = "Custom FoE #2";
+    
     updateAbilitySum();
     updateFoESum();
     updateCombatFields();
@@ -31,6 +38,12 @@ document.addEventListener("DOMContentLoaded", function () {
         data[input.name] = input.value;
       }
     });
+
+    // Manuelle Ergänzung für die editierbaren FoE-Labels
+    const customFoE1 = document.querySelector('.editable-label[data-placeholder="Custom FoE #1"]');
+    const customFoE2 = document.querySelector('.editable-label[data-placeholder="Custom FoE #2"]');
+    if (customFoE1) data.label_custom_foe_1 = customFoE1.innerText.trim();
+    if (customFoE2) data.label_custom_foe_2 = customFoE2.innerText.trim();
 
     const blob = new Blob([JSON.stringify(data, null, 2)], {
       type: "application/json",
@@ -76,6 +89,13 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         });
       }
+      
+      // Manuelle Ergänzung für die editierbaren FoE-Labels
+      const customFoE1 = document.querySelector('.editable-label[data-placeholder="Custom FoE #1"]');
+      const customFoE2 = document.querySelector('.editable-label[data-placeholder="Custom FoE #2"]');
+      if (customFoE1 && data.label_custom_foe_1) customFoE1.innerText = data.label_custom_foe_1;
+      if (customFoE2 && data.label_custom_foe_2) customFoE2.innerText = data.label_custom_foe_2;
+
       updateAbilitySum();
       updateFoESum();
       updateCombatFields();
