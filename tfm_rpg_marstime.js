@@ -1,6 +1,6 @@
 const marsMonths = [
-  { name: "Orion", sols: 28 },      // Der Jäger – bekannteste Winterkonstellation
-  { name: "Sirius", sols: 27 },     // Hellster Stern, im "Großen Hund"
+  { name: "Orion", sols: 28 },      // Der Jaeger – bekannteste Winterkonstellation
+  { name: "Sirius", sols: 27 },     // Hellster Stern, im "Grossen Hund"
   { name: "Vega", sols: 28 },       // Hauptstern in der Leier, Teil des Sommerdreiecks
   { name: "Lyra", sols: 27 },       // Die Leier – kleines, aber markantes Sternbild
   { name: "Cygnus", sols: 28 },     // Der Schwan – kreuzt die Milchstraße
@@ -11,8 +11,8 @@ const marsMonths = [
   { name: "Taurus", sols: 27 },     // Das Sternbild Stier
   { name: "Castor", sols: 28 },     // Einer der Zwillinge (Gemini)
   { name: "Pollux", sols: 27 },     // Der andere Zwilling
-  { name: "Regulus", sols: 28 },    // Hauptstern im Löwen
-  { name: "Leo", sols: 27 },        // Das Sternbild Löwe
+  { name: "Regulus", sols: 28 },    // Hauptstern im Loewen
+  { name: "Leo", sols: 27 },        // Das Sternbild Loewe
   { name: "Spica", sols: 28 },      // Hauptstern der Jungfrau
   { name: "Virgo", sols: 27 },      // Die Jungfrau
   { name: "Antares", sols: 28 },    // Roter Riese im Skorpion
@@ -20,7 +20,7 @@ const marsMonths = [
   { name: "Betelgeuse", sols: 28 }, // Schulterstern in Orion – baldige Supernova
   { name: "Canopus", sols: 27 },    // Zweithellster Stern, Navigation auf See
   { name: "Arcturus", sols: 28 },   // Heller Roter Riese in Bootes
-  { name: "Deneb", sols: 27 },      // Schwänzchen des Schwans – Teil des Sommerdreiecks
+  { name: "Deneb", sols: 27 },      // Schwaenzchen des Schwans – Teil des Sommerdreiecks
   { name: "Capella", sols: 28 },    // In Auriga (Fuhrmann), einer der hellsten
   { name: "Procyon", sols: 27 }     // In Canis Minor – mit Sirius und Betelgeuse ein Winterdreieck
 ];
