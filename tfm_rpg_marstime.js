@@ -175,10 +175,14 @@ function getMarsDateFromUTC(date = new Date()) {
 
 // Live-Anzeige
 function updateMarsDateDisplay() {
+  const target = document.getElementById("marsDate");
+  if (!target) return;
+
   const now = new Date();
-  const marsDate = getMarsDateFromUTC(now);
-  document.getElementById("marsDateLive").innerText =
-    `Marsdatum: ${marsDate.day}. ${marsDate.month} ${marsDate.year}`;
+  const marsDate = getMarsDateFromUTC(now, true);
+
+  const dateString = `${marsDate.day}. ${marsDate.month} ${marsDate.year}`;
+  target.innerText = dateString;
 }
 
 // Konverter Erddatum -> Marsdatum
