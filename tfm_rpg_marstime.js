@@ -62,7 +62,30 @@ function getUTCDateFromLocalInput(inputStr) {
 
 // Julian Date berechnen
 function getJulianDate(date) {
-  return date.getTime() / 86400000 + 2440587.5;
+  const Y = date.getUTCFullYear();
+  const M = date.getUTCMonth() + 1;
+  const D = date.getUTCDate();
+  const H = date.getUTCHours();
+  const Min = date.getUTCMinutes();
+  const S = date.getUTCSeconds();
+
+  const dayFraction = (H + (Min + S / 60) / 60) / 24;
+
+  let y = Y;
+  let m = M;
+  if (m <= 2) {
+    y -= 1;
+    m += 12;
+  }
+
+  const A = Math.floor(y / 100);
+  const B = 2 - A + Math.floor(A / 4);
+
+  const JD = Math.floor(365.25 * (y + 4716))
+           + Math.floor(30.6001 * (m + 1))
+           + D + dayFraction + B - 1524.5;
+
+  return JD;
 }
 
 // MSD berechnen
