@@ -89,9 +89,10 @@ function getJulianDate(date) {
 }
 
 // MSD berechnen
-function getMSD(date = new Date()) {
+// We defined 06.01.2000 00:00:00 UTC to be Julian Date 44796.000000. Therefore this will result in 1. Orion 1 00:00:00 MTC
+function getMSD(date) {
   const jd = getJulianDate(date);
-  return (jd - 2405522.0028779) / 1.0274912517;
+  return (jd - 2451549.5) / 1.0274912517 + 44796.0;
 }
 
 // MTC als String HH:MM:SS
