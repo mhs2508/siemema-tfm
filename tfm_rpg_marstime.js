@@ -27,20 +27,54 @@ const marsMonths = [
 
 let solBaseDate = new Date(Date.UTC(2000, 0, 6)); // Standardwert: 6. Jan 2000
 
+// Kalender Konverter Erde -> Mars
+function convertEarthToMarsSimple() {
+  const input = document.getElementById("earthDateTime").value;
+  if (!input) return;
+
+   const date = getUTCDateFromLocalInput(input); // garantiert UTC, keine Zeitzonenprobleme
+  
+  // Gültigkeitsprüfung
+  const jd = getJulianDate(date); // neue, präzise Funktion
+  if (isNaN(jd) || jd < 2451549.5) {
+    document.getElementById("marsResultSimple").innerText = "Datum muss nach dem 6. Januar 2000 liegen.";
+    return;
+  }
+
+  console.log("UTC input:", date.toISOString());
+  console.log("Julian Date:", jd);
+  console.log("MSD:", getMSD(date));
+  console.log("MTC:", getMTC(date));
+
+  const marsDate = getMarsDateFromUTC(date);
+  const marsTime = getMTC(date);
+
+  const resultStr = `Marsdatum: ${marsDate.day}. ${marsDate.month} ${marsDate.year} – ${marsTime} MTC`;
+  document.getElementById("marsResultSimple").innerText = resultStr;
+}
+
+function getUTCDateFromLocalInput(inputStr) {
+  const [datePart, timePart] = inputStr.split("T");
+  const [year, month, day] = datePart.split("-").map(Number);
+  const [hour, minute] = timePart.split(":").map(Number);
+  return new Date(Date.UTC(year, month - 1, day, hour, minute));
+}
+
 // Julian Date berechnen
-function getJulianDate(date = new Date()) {
+function getJulianDate(date) {
   return date.getTime() / 86400000 + 2440587.5;
 }
 
 // MSD berechnen
 function getMSD(date = new Date()) {
   const jd = getJulianDate(date);
-  return (jd - 2405522.0028779) / 1.02749125;
+  return (jd - 2405522.0028779) / 1.0274912517;
 }
 
 // MTC als String HH:MM:SS
 function getMTC(date = new Date()) {
-  const mtcFloat = (getMSD(date) % 1) * 24;
+  const msd = getMSD(date);
+  const mtcFloat = (msd % 1) * 24;
   const hours = Math.floor(mtcFloat);
   const minutes = Math.floor((mtcFloat % 1) * 60);
   const seconds = Math.floor((((mtcFloat % 1) * 60) % 1) * 60);

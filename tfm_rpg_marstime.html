@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="siemema-de.css" />
 </head>
 <body>
+
+    <h1>Erd-Datum & Uhrzeit → Mars-Datum</h1>
+    <label for="earthDateTime">Datum & Zeit (UTC):</label>
+    <input type="datetime-local" id="earthDateTime" />
+    <button onclick="convertEarthToMarsSimple()">Umrechnen</button>
+    <p id="marsResultSimple"></p>
+
+    <hr />
+
     <h1>Mars Time Converter (UTC -> MTC)</h1>
     <p>Convert Earth UTC to Mars Coordinated Time MTC</p>
     <label for="earthTime">Earth UTC Time:</label>
