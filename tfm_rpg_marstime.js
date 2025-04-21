@@ -37,7 +37,7 @@ function convertEarthToMarsSimple() {
   // Gültigkeitsprüfung
   const jd = getJulianDate(date); // neue, präzise Funktion
   if (isNaN(jd) || jd < 2451549.5) {
-    document.getElementById("marsResultSimple").innerText = "Datum muss nach dem 6. Januar 2000 liegen.";
+    document.getElementById("marsResultSimple").innerText = "No dates earlier than January 6th, 2000 00:00:00 UTC allowed.";
     return;
   }
 
@@ -49,7 +49,7 @@ function convertEarthToMarsSimple() {
   const marsDate = getMarsDateFromUTC(date);
   const marsTime = getMTC(date);
 
-  const resultStr = `Marsdatum: ${marsDate.day}. ${marsDate.month} ${marsDate.year} – ${marsTime} MTC`;
+  const resultStr = `Mars date & time: ${marsDate.day}. ${marsDate.month} ${marsDate.year} – ${marsTime} MTC`;
   document.getElementById("marsResultSimple").innerText = resultStr;
 }
 
@@ -88,11 +88,44 @@ function getJulianDate(date) {
   return JD;
 }
 
-// MSD berechnen
-// We defined 06.01.2000 00:00:00 UTC to be Julian Date 44796.000000. Therefore this will result in 1. Orion 1 00:00:00 MTC
-function getMSD(date) {
+// MSD-Berechnung nach eigenem Bezugspunkt:
+// ----------------------------------------
+// Aktuell basiert die Mars-Zeit-Berechnung auf folgendem Referenzdatum:
+//   MSD 44796.0 = JD 2451549.5 = 06. Januar 2000, 00:00 UTC
+// Dies ist nicht NASA-konform, aber intern konsistent und exakt synchron
+// mit dem eigenen Kalender: 1. Orion 1 – 00:00 MTC.
+//
+// Um NASA-kompatibel zu rechnen, müsste die MSD-Funktion stattdessen:
+//
+//   - Den offiziellen Julian-Date-Offset der NASA verwenden:
+//       JD_REF = 2405522.0028779  // entspricht: 1873-12-29 12:00 UTC
+//   - Und folgende Formel nutzen:
+//       MSD = (JD - JD_REF) / 1.0274912517
+//
+// Dadurch ergibt sich für:
+//   JD 2451550.0 (06. Jan 2000, 12:00 UTC) → MSD 44796.0
+//
+// ➤ Für spätere Umstellung einfach die MSD-Funktion anpassen.
+// ----------------------------------------
+// function getMSD(date) {
+//  const jd = getJulianDate(date);
+//  return (jd - 2405522.0028779) / 1.0274912517;
+// }
+// ----------------------------------------
+/* function getMSD(date) {
   const jd = getJulianDate(date);
   return (jd - 2451549.5) / 1.0274912517 + 44796.0;
+} */
+
+function getMSD(date = new Date()) {
+  const jd = getJulianDate(date);
+  const useNasa = document.getElementById("useNasaMode")?.checked;
+
+  if (useNasa) {
+    return (jd - 2405522.0028779) / 1.0274912517;
+  } else {
+    return (jd - 2451549.5) / 1.0274912517 + 44796.0;
+  }
 }
 
 // MTC als String HH:MM:SS
@@ -103,6 +136,21 @@ function getMTC(date = new Date()) {
   const minutes = Math.floor((mtcFloat % 1) * 60);
   const seconds = Math.floor((((mtcFloat % 1) * 60) % 1) * 60);
   return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+}
+
+function updateReferenceInfo() {
+  const checked = document.getElementById("useNasaMode").checked;
+  const refNote = document.getElementById("referenceNote");
+  if (checked) {
+    refNote.innerText =
+      "Using NASA Mars epoch: 06.01.2000 12:00 UTC → JD 2451550.0 → MSD 44796.0";
+  } else {
+    refNote.innerText =
+      "Using custom Mars epoch: 06.01.2000 00:00 UTC → JD 2451549.5 → MSD 44796.0";
+  }
+
+  // Optional: aktuelle Uhr sofort aktualisieren
+  updateLiveClocks?.();
 }
 
 function pad(n) {
