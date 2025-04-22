@@ -304,7 +304,8 @@ function convertEarthDateToMars() {
     `Marsdatum: ${marsDate.day}. ${marsDate.month} ${marsDate.year}`;
 }
 
-// Funktion für Visual Mars Clock
+// Funktion für Visual Mars Clock (24 Stunden Modus)
+/* 
 function drawMarsClock() {
   const canvas = document.getElementById("marsClock");
   if (!canvas) return;
@@ -374,7 +375,78 @@ function drawMarsClock() {
   ctx.font = "12px sans-serif";
   ctx.fillText(`${marsDate.year}`, cx, cy + 28);
 }
+*/
 
+// Funktion für Visual Mars Clock (12 Stunden Modus)
+function drawMarsClock() {
+  const canvas = document.getElementById("marsClock");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+
+  const now = new Date();
+  const msd = getMSD(now);
+  if (!msd || isNaN(msd)) return;
+
+  const mtcFloat = (msd % 1) * 24;
+  const mtcHours = Math.floor(mtcFloat);
+  const mtcMinutes = Math.floor((mtcFloat % 1) * 60);
+  const mtcSeconds = Math.floor((((mtcFloat % 1) * 60) % 1) * 60);
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const cx = canvas.width / 2;
+  const cy = canvas.height / 2;
+  const radius = cx - 10;
+
+  // Hintergrundring
+  ctx.beginPath();
+  ctx.arc(cx, cy, radius, 0, 2 * Math.PI);
+  ctx.strokeStyle = "#ff4500";
+  ctx.lineWidth = 4;
+  ctx.stroke();
+
+  // Stundenmarkierungen (1 bis 12)
+  ctx.fillStyle = "#ffa500";
+  ctx.font = "10px sans-serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  for (let i = 1; i <= 12; i++) {
+    const angle = (i / 12) * 2 * Math.PI - Math.PI / 2;
+    const x = cx + Math.cos(angle) * (radius - 15);
+    const y = cy + Math.sin(angle) * (radius - 15);
+    ctx.fillText(i.toString(), x, y);
+  }
+
+  // Label "MTC"
+  ctx.font = "bold 10px sans-serif";
+  ctx.fillStyle = "#ffa500";
+  ctx.fillText("MTC", cx, cy - radius + 30);
+
+  // AM/PM Anzeige (zwischen Mittelpunkt und "3")
+  const ampm = mtcHours >= 12 ? "PM" : "AM";
+  const ampmX = cx + radius * 0.6;
+  const ampmY = cy;
+  ctx.fillStyle = "#ffcc99";
+  ctx.font = "bold 12px sans-serif";
+  ctx.fillText(ampm, ampmX, ampmY);
+
+  // Zeiger
+  const hour = mtcHours % 12 || 12;
+  drawHand((hour / 12) * 2 * Math.PI, radius * 0.5, "#ff6347", 4, ctx, cx, cy);
+  drawHand((mtcMinutes / 60) * 2 * Math.PI, radius * 0.7, "#ffa07a", 2, ctx, cx, cy);
+  drawHand((mtcSeconds / 60) * 2 * Math.PI, radius * 0.85, "#f0e68c", 1, ctx, cx, cy);
+
+  // Marsdatum in die Mitte schreiben
+  const marsDate = getMarsDateFromUTC(now);
+  ctx.fillStyle = "#ff6347";
+  ctx.font = "bold 13px sans-serif";
+  ctx.fillText(`${marsDate.day}. ${marsDate.month}`, cx, cy + 12);
+  ctx.font = "12px sans-serif";
+  ctx.fillText(`${marsDate.year}`, cx, cy + 28);
+}
+
+// Funktion für Visual Earth Clock (24 Stunden Modus)
+/* 
 function drawEarthClock() {
   const canvas = document.getElementById("earthClock");
   if (!canvas) return;
@@ -446,6 +518,89 @@ function drawEarthClock() {
   ctx.fillText(`${day}. ${month}`, cx, cy + 12);
   ctx.font = "12px sans-serif";
   ctx.fillText(`${year}`, cx, cy + 28);
+}
+*/ 
+
+// Funktion für Visual Earth Clock (12 Stunden Modus)
+function drawEarthClock() {
+  const canvas = document.getElementById("earthClock");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+
+  const now = new Date();
+  const hours = now.getUTCHours();
+  const minutes = now.getUTCMinutes();
+  const seconds = now.getUTCSeconds();
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const cx = canvas.width / 2;
+  const cy = canvas.height / 2;
+  const radius = cx - 10;
+
+  // Hintergrundring
+  ctx.beginPath();
+  ctx.arc(cx, cy, radius, 0, 2 * Math.PI);
+  ctx.strokeStyle = "#3399ff";
+  ctx.lineWidth = 4;
+  ctx.stroke();
+
+  // Stundenmarkierungen (1 bis 12)
+  ctx.fillStyle = "#00ff66";
+  ctx.font = "10px sans-serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  for (let i = 1; i <= 12; i++) {
+    const angle = (i / 12) * 2 * Math.PI - Math.PI / 2;
+    const x = cx + Math.cos(angle) * (radius - 15);
+    const y = cy + Math.sin(angle) * (radius - 15);
+    ctx.fillText(i.toString(), x, y);
+  }
+
+  // Label "UTC"
+  ctx.font = "bold 10px sans-serif";
+  ctx.fillStyle = "#00ff66";
+  ctx.fillText("UTC", cx, cy - radius + 30);
+
+  // AM/PM Anzeige (zwischen Mittelpunkt und "3")
+  const ampm = hours >= 12 ? "PM" : "AM";
+  const ampmX = cx + radius * 0.6;
+  const ampmY = cy;
+  ctx.fillStyle = "#66ccff";
+  ctx.font = "bold 12px sans-serif";
+  ctx.fillText(ampm, ampmX, ampmY);
+
+  // Zeiger
+  const hour = hours % 12 || 12;
+  drawHand((hour / 12) * 2 * Math.PI, radius * 0.5, "#3399ff", 4, ctx, cx, cy);
+  drawHand((minutes / 60) * 2 * Math.PI, radius * 0.7, "#66ccff", 2, ctx, cx, cy);
+  drawHand((seconds / 60) * 2 * Math.PI, radius * 0.85, "#aaddff", 1, ctx, cx, cy);
+
+  // Erd-Datum in die Mitte schreiben
+  const months = ["Januar", "Februar", "März", "April", "Mai", "Juni",
+    "Juli", "August", "September", "Oktober", "November", "Dezember"];
+  const day = now.getUTCDate();
+  const month = months[now.getUTCMonth()];
+  const year = now.getUTCFullYear();
+
+  ctx.fillStyle = "#3399ff";
+  ctx.font = "bold 13px sans-serif";
+  ctx.fillText(`${day}. ${month}`, cx, cy + 12);
+  ctx.font = "12px sans-serif";
+  ctx.fillText(`${year}`, cx, cy + 28);
+}
+
+// Hilfsfunktion fuer Zeiger
+function drawHand(angle, length, color, width, ctx, cx, cy) {
+  ctx.beginPath();
+  ctx.moveTo(cx, cy);
+  ctx.lineTo(
+    cx + Math.cos(angle - Math.PI / 2) * length,
+    cy + Math.sin(angle - Math.PI / 2) * length
+  );
+  ctx.strokeStyle = color;
+  ctx.lineWidth = width;
+  ctx.stroke();
 }
 
 function updateDigitalClocks() {
