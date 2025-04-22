@@ -448,6 +448,25 @@ function drawEarthClock() {
   ctx.fillText(`${year}`, cx, cy + 28);
 }
 
+function updateDigitalClocks() {
+  const now = new Date();
+
+  // Earth
+  const utc = `${pad(now.getUTCHours())}:${pad(now.getUTCMinutes())}:${pad(now.getUTCSeconds())}`;
+  const months = ["Januar", "Februar", "März", "April", "Mai", "Juni",
+                  "Juli", "August", "September", "Oktober", "November", "Dezember"];
+  const earthDate = `${now.getUTCDate()}. ${months[now.getUTCMonth()]} ${now.getUTCFullYear()}`;
+  document.getElementById("earthClockDigital").innerText = utc;
+  document.getElementById("earthDateDigital").innerText = earthDate;
+
+  // Mars
+  const mtc = getMTC(now);
+  const marsDate = getMarsDateFromUTC(now);
+  const marsDateStr = `${marsDate.day}. ${marsDate.month} ${marsDate.year}`;
+  document.getElementById("marsClockDigital").innerText = mtc;
+  document.getElementById("marsDateDigital").innerText = marsDateStr;
+}
+
 // Start the live clock
 setInterval(updateLiveClocks, 1000);
 updateLiveClocks();
@@ -457,3 +476,6 @@ setInterval(updateMarsDateDisplay, 1000);
 updateMarsDateDisplay();
 setInterval(drawMarsClock, 1000);
 drawMarsClock();
+// Digital Clocks
+// setInterval(updateDigitalClocks, 1000);
+// updateDigitalClocks();
