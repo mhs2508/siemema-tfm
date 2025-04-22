@@ -7,7 +7,23 @@
     <link rel="stylesheet" href="siemema-de.css" />
 </head>
 <body>
-    <h1>Mars Time Converter (UTC -> MTC)</h1>
+
+    <h1>Date Time Converter Earth → Mars</h1>
+    <label>
+    <input type="checkbox" id="useNasaMode" onchange="updateReferenceInfo()" />
+    Use official NASA reference (06.01.2000 12:00 UTC)
+    </label>
+    <p id="referenceNote">
+    Using custom Mars epoch: 06.01.2000 00:00 UTC → JD 2451549.5 → MSD 44796.0
+    </p>
+    <label for="earthDateTime">Date & Time (UTC):</label>
+    <input type="datetime-local" id="earthDateTime" />
+    <button onclick="convertEarthToMarsSimple()">Convert</button>
+    <p id="marsResultSimple"></p>
+
+    <hr />
+
+    <h1>Mars Time Converter (UTC → MTC)</h1>
     <p>Convert Earth UTC to Mars Coordinated Time MTC</p>
     <label for="earthTime">Earth UTC Time:</label>
     <input type="time" id="earthTime" step="1" value="13:00:00" />
@@ -15,7 +31,7 @@
     <h2 id="convertedTime">Mars Time (MTC): --:--:--</h2>
     <hr />
  
-    <h1>Mars Time Converter (MTC -> UTC)</h2>
+    <h1>Mars Time Converter (MTC → UTC)</h2>
     <p>Convert Mars Coordinated Time MTC to Earth UTC</p>
     <label for="marsTime">Mars MTC Time:</label>
     <input type="time" id="marsTime" step="1" value="12:00:00" />
@@ -37,8 +53,7 @@
     <hr />
 
     <h2>Live Clock</h2>
-        <p>Based on official NASA reference to January 6th, 2000 12:00 UTC</p>
-        <div style="display: grid; grid-template-columns: auto 1fr; gap: 0.5em; line-height: 1.6;">
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 0.5em; line-height: 1.6;">
             <div><strong>Earth UTC:</strong></div>
             <div><span id="utcDate">--</span><br><span id="utcClock">--:--:--</span></div>
           
