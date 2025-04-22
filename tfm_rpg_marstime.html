@@ -64,15 +64,33 @@
     <hr />
 
     <h2>Visual Mars Clock</h2>
+    <!-- Analog clocks -->
     <div style="display: flex; justify-content: left; gap: 2em;">
         <canvas id="earthClock" width="200" height="200" style="background: #0a1a2f; border-radius: 50%; box-shadow: 0 0 10px #3399ff;"></canvas>
         <canvas id="marsClock" width="200" height="200" style="background: #1a1a1a; border-radius: 50%; box-shadow: 0 0 10px #ff4500;"></canvas>
     </div>
+    
+    <!-- Digital clocks -->
+    <!-- 
+    <div style="display: flex; flex-direction: row; gap: 2em; font-family: monospace; font-size: 1.5rem; color: white;">
+    <div style="background: #0a1a2f; padding: 1em; border-radius: 1em; box-shadow: 0 0 10px #3399ff;">
+        <strong>Earth UTC</strong><br>
+        <span id="earthClockDigital">--:--:--</span><br>
+        <small id="earthDateDigital">--</small>
+    </div>
+    <div style="background: #1a1a1a; padding: 1em; border-radius: 1em; box-shadow: 0 0 10px #ff4500;">
+        <strong>Mars MTC</strong><br>
+        <span id="marsClockDigital">--:--:--</span><br>
+        <small id="marsDateDigital">--</small>
+    </div>
+    </div>
+    -->
 
     <div class="footer-links">
         <a href="index.html">Back to siemema.de</a>
         <a href="https://github.com/mhs2508/siemema-tfm/issues">Report Bug</a>
     </div>
+
     <script src="tfm_rpg_marstime.js"></script>
 
     <script>
