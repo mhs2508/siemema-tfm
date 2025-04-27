@@ -9,8 +9,16 @@
 <body class="rpg">
   <header>Terraforming Mars RPG – Character Sheet</header>
   <main>
+    <div class="language-switch">
+      <label>EN</label>
+      <label class="switch">
+        <input type="checkbox" id="languageSwitch">
+        <span class="slider"></span>
+      </label>
+      <label>DE</label>
+    </div>
     <section class="section fieldset-box">
-      <h2>Character</h2>
+      <h2 id="character-header">Character</h2>
       <div class="input-grid">
         <div><label>Name<br><input type="text" name="name"></label></div>
         <div><label>Age<br><input type="text" name="age"></label></div>
@@ -183,9 +191,9 @@
     </section>
             
     <section class="section fieldset-box page-break">
-        <h2>Vital Status</h2>
+        <h2 id="vital-status-header">Vital Status</h2>
         <div class="fieldset-box-inner">
-            <h3 class="legend-heading">Mental Stress</h3>
+            <h3 id="mental-stress-header" class="legend-heading">Mental Stress</h3>
             <p>When the GM asks for a stress check, an amount of dice are rolled. The results are marked off in the mental stress box. 
                 If the same result is marked twice, this results in a <b>temporary loss of control.</b></p>
             <p>When boxes 1-2 and 3-4 are marked both, the character feels uneasy, if 5 gets marked as well, adrenaline takes over: 
@@ -200,7 +208,7 @@
         </div>
         
         <div class="fieldset-box-inner">
-            <h3 class="legend-heading">Long-Term Traumas</h3>
+            <h3 id="traumas-header" class="legend-heading">Long-Term Traumas</h3>
             <p>When all the mental stress boxes are marked, add one trauma point. At the end of each game session, roll 1d for each trauma point. 
                 Count the non-successes, ignore any 5 and count the 6 as double success. For each success resolve one failure. 
                 The number of remaining failures is the severity of the long-term trauma the characters gets.</p>
@@ -214,98 +222,98 @@
     </section>
 
     <section class="section fieldset-box page-break">
-        <h2>Combat</h2>
-            <table class="stats-table">
-              <tr>
-                <td>
-                  <label>Initiative for Attack<br>(Body+Combat)<br>
-                      <input type="number" min="0" max="8" value="0" class="narrow" name="combat_initiative_attack">
-                  </label><br>
-                </td>
-                <td>
-                  <label>Initiative<br>(Body x2)<br>
-                      <input type="number" min="0" max="8" value="0" class="narrow" name="combat_initiative_normal">
-                  </label><br>
-                </td>
-                <td>
-                  <label>OCR<br>(Body+Combat)<br>
-                    <input type="number" min="0" max="8" value="0" class="narrow" name="combat_ocr">
+      <h2 id="combat-header">Combat</h2>
+          <table class="stats-table">
+            <tr>
+              <td>
+                <label>Initiative for Attack<br>(Body+Combat)<br>
+                    <input type="number" min="0" max="8" value="0" class="narrow" name="combat_initiative_attack">
                 </label><br>
-                </td>
+              </td>
+              <td>
+                <label>Initiative<br>(Body x2)<br>
+                    <input type="number" min="0" max="8" value="0" class="narrow" name="combat_initiative_normal">
+                </label><br>
+              </td>
+              <td>
+                <label>OCR<br>(Body+Combat)<br>
+                  <input type="number" min="0" max="8" value="0" class="narrow" name="combat_ocr">
+              </label><br>
+              </td>
+            </tr>
+          </table>
+          <h3 class="legend-heading" id="weapons-header">Weapons</h3>
+          <table class="weapons-table" id="weapons-table">
+            <thead>
+              <tr>
+                <th style="width:65%; text-align: left;">Weapon</th>
+                <th style="width:20%; text-align: left;">Type</th>
+                <th style="width:15%; text-align: left;">Damage</th>
               </tr>
-            </table>
-            <h3 class="legend-heading" id="weapons-header">Weapons</h3>
-            <table class="weapons-table" id="weapons-table">
-              <thead>
-                <tr>
-                  <th style="width:65%; text-align: left;">Weapon</th>
-                  <th style="width:20%; text-align: left;">Type</th>
-                  <th style="width:15%; text-align: left;">Damage</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><input type="text" name="weapon_1_name" placeholder="Weapon Name" style="width: 100%;"></td>
-                  <td>
-                    <select name="weapon_1_type" style="width: 100%;">
-                      <option value="">Choose type</option>
-                      <option value="ranged">Ranged</option>
-                      <option value="close">Close Combat</option>
-                      <option value="explosives">Explosives</option>
-                    </select>
-                  </td>
-                  <td><input type="text" name="weapon_1_damage" placeholder="3d6" style="width: 100%;"></td>
-                </tr>
-                <tr>
-                  <td><input type="text" name="weapon_2_name" placeholder="Weapon Name" style="width: 100%;"></td>
-                  <td>
-                    <select name="weapon_2_type" style="width: 100%;">
-                      <option value="">Choose type</option>
-                      <option value="ranged">Ranged</option>
-                      <option value="close">Close Combat</option>
-                      <option value="explosives">Explosives</option>
-                    </select>
-                  </td>
-                  <td><input type="text" name="weapon_2_damage" placeholder="2d6" style="width: 100%;"></td>
-                </tr>
-                <tr>
-                  <td><input type="text" name="weapon_3_name" placeholder="Weapon Name" style="width: 100%;"></td>
-                  <td>
-                    <select name="weapon_3_type" style="width: 100%;">
-                      <option value="">Choose type</option>
-                      <option value="ranged">Ranged</option>
-                      <option value="close">Close Combat</option>
-                      <option value="explosives">Explosives</option>
-                    </select>
-                  </td>
-                  <td><input type="text" name="weapon_3_damage" placeholder="4d6" style="width: 100%;"></td>
-                </tr>
-              </tbody>
-            </table>                             
-            <div class="fieldset-box-inner">
-                <h3 class="legend-heading">Vitality</h3>
-                <p>Taking damage means injuries. Damage rolls need to be marked off here. The highest unmarked number in vitality determines the maximum dice number 
-                    a character can roll, because injuries affect concentration and physical activity.</p>
-                <label class="checkbox-label"><input type="checkbox" name="vital_1"> 1</label>
-                <label class="checkbox-label"><input type="checkbox" name="vital_2"> 2</label>
-                <label class="checkbox-label"><input type="checkbox" name="vital_3"> 2</label>
-                <label class="checkbox-label"><input type="checkbox" name="vital_4"> 3</label>
-                <label class="checkbox-label"><input type="checkbox" name="vital_5"> 3</label>
-                <label class="checkbox-label"><input type="checkbox" name="vital_6"> 4</label>
-                <label class="checkbox-label"><input type="checkbox" name="vital_7"> 5</label>
-                <label class="checkbox-label"><input type="checkbox" name="vital_8"> 6</label>
-            </div>
-            <div class="fieldset-box-inner">
-                <h3 class="incapitation-heading">Incapitation</h3>
-                <p>For each even number in a damage roll, mark off an incapitation box. If all incapitation boxes are marked off, the character can no longer 
-                    participate in the combat. In other words: You are knocked out, immobilized, overpowered etc.</p>
-                <label class="checkbox-label"><input type="checkbox" name="incapitation_1"> 1</label>
-                <label class="checkbox-label"><input type="checkbox" name="incapitation_2"> 2</label>
-                <label class="checkbox-label"><input type="checkbox" name="incapitation_3"> 3</label>
-                <label class="checkbox-label"><input type="checkbox" name="incapitation_4"> 4</label>
-            </div>
-          </fieldset>
-        </div>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="text" name="weapon_1_name" placeholder="Weapon Name" style="width: 100%;"></td>
+                <td>
+                  <select name="weapon_1_type" style="width: 100%;">
+                    <option value="">Choose type</option>
+                    <option value="ranged">Ranged</option>
+                    <option value="close">Close Combat</option>
+                    <option value="explosives">Explosives</option>
+                  </select>
+                </td>
+                <td><input type="text" name="weapon_1_damage" placeholder="3d6" style="width: 100%;"></td>
+              </tr>
+              <tr>
+                <td><input type="text" name="weapon_2_name" placeholder="Weapon Name" style="width: 100%;"></td>
+                <td>
+                  <select name="weapon_2_type" style="width: 100%;">
+                    <option value="">Choose type</option>
+                    <option value="ranged">Ranged</option>
+                    <option value="close">Close Combat</option>
+                    <option value="explosives">Explosives</option>
+                  </select>
+                </td>
+                <td><input type="text" name="weapon_2_damage" placeholder="2d6" style="width: 100%;"></td>
+              </tr>
+              <tr>
+                <td><input type="text" name="weapon_3_name" placeholder="Weapon Name" style="width: 100%;"></td>
+                <td>
+                  <select name="weapon_3_type" style="width: 100%;">
+                    <option value="">Choose type</option>
+                    <option value="ranged">Ranged</option>
+                    <option value="close">Close Combat</option>
+                    <option value="explosives">Explosives</option>
+                  </select>
+                </td>
+                <td><input type="text" name="weapon_3_damage" placeholder="4d6" style="width: 100%;"></td>
+              </tr>
+            </tbody>
+          </table>                             
+          <div class="fieldset-box-inner">
+              <h3 id="vitality-header" class="legend-heading">Vitality</h3>
+              <p>Taking damage means injuries. Damage rolls need to be marked off here. The highest unmarked number in vitality determines the maximum dice number 
+                  a character can roll, because injuries affect concentration and physical activity.</p>
+              <label class="checkbox-label"><input type="checkbox" name="vital_1"> 1</label>
+              <label class="checkbox-label"><input type="checkbox" name="vital_2"> 2</label>
+              <label class="checkbox-label"><input type="checkbox" name="vital_3"> 2</label>
+              <label class="checkbox-label"><input type="checkbox" name="vital_4"> 3</label>
+              <label class="checkbox-label"><input type="checkbox" name="vital_5"> 3</label>
+              <label class="checkbox-label"><input type="checkbox" name="vital_6"> 4</label>
+              <label class="checkbox-label"><input type="checkbox" name="vital_7"> 5</label>
+              <label class="checkbox-label"><input type="checkbox" name="vital_8"> 6</label>
+          </div>
+          <div class="fieldset-box-inner">
+              <h3 id="incapitation-header" class="incapitation-heading">Incapitation</h3>
+              <p>For each even number in a damage roll, mark off an incapitation box. If all incapitation boxes are marked off, the character can no longer 
+                  participate in the combat. In other words: You are knocked out, immobilized, overpowered etc.</p>
+              <label class="checkbox-label"><input type="checkbox" name="incapitation_1"> 1</label>
+              <label class="checkbox-label"><input type="checkbox" name="incapitation_2"> 2</label>
+              <label class="checkbox-label"><input type="checkbox" name="incapitation_3"> 3</label>
+              <label class="checkbox-label"><input type="checkbox" name="incapitation_4"> 4</label>
+          </div>
+        </fieldset>
+      </div>
     </section>
 
     <div class="button-container">
