@@ -492,6 +492,28 @@ table.stats-table td {
     vertical-align: top;
 }
 
+/* Eigene Tabelle für Waffen */
+table.weapons-table {
+    width: 100%;
+    table-layout: auto;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: transparent;
+  }
+  
+  table.weapons-table th,
+  table.weapons-table td {
+    padding: 10px;
+    text-align: left;
+    vertical-align: middle;
+  }
+  
+  table.weapons-table input[type="text"],
+  table.weapons-table select {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
 /* Nur für tfm_rpg_character.html – Inputfelder untereinander korrekt ausrichten */
 table.stats-table td > label + input[type="text"] {
     display: block;

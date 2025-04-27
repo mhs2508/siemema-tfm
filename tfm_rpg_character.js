@@ -14,6 +14,12 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
+    // Waffen-Dropdowns auf Default setzen
+    ["weapon_1_type", "weapon_2_type", "weapon_3_type"].forEach((typeFieldName) => {
+      const select = document.querySelector(`[name="${typeFieldName}"]`);
+      if (select) select.value = "";
+    });
+
     // Reset editable FoE labels to default
     const customFoE1 = document.querySelector('.editable-label[data-placeholder="Custom FoE #1"]');
     const customFoE2 = document.querySelector('.editable-label[data-placeholder="Custom FoE #2"]');
@@ -37,6 +43,17 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         data[input.name] = input.value;
       }
+    });
+
+    // Waffen exportieren
+    ["weapon_1", "weapon_2", "weapon_3"].forEach((weapon) => {
+      const nameInput = document.querySelector(`[name="${weapon}_name"]`);
+      const typeInput = document.querySelector(`[name="${weapon}_type"]`);
+      const damageInput = document.querySelector(`[name="${weapon}_damage"]`);
+    
+      if (nameInput) data[`${weapon}_name`] = nameInput.value;
+      if (typeInput) data[`${weapon}_type`] = typeInput.value;
+      if (damageInput) data[`${weapon}_damage`] = damageInput.value;
     });
 
     // Manuelle Ergänzung für die editierbaren FoE-Labels
@@ -90,6 +107,16 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
       
+      // Waffen importieren
+      const elements = document.querySelectorAll(`[name="${key}"]`);
+      elements.forEach((input) => {
+        if (input.type === "checkbox") {
+          input.checked = data[key];
+        } else {
+          input.value = data[key];
+        }
+      });
+
       // Manuelle Ergänzung für die editierbaren FoE-Labels
       const customFoE1 = document.querySelector('.editable-label[data-placeholder="Custom FoE #1"]');
       const customFoE2 = document.querySelector('.editable-label[data-placeholder="Custom FoE #2"]');
