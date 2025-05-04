@@ -21,6 +21,74 @@
     <button onclick="convertEarthToMarsSimple()">Convert</button>
     <p id="marsResultSimple"></p>
 
+    <details style="margin-top: 1em; font-size: 0.95rem;">
+        <summary style="cursor: pointer; font-weight: bold;">About the Martian calendar system</summary>
+        <p style="margin-top: 0.5em;">
+          Our Martian calendar consists of 24 months, alternating between 28 and 27 sols (Martian days), 
+          for a total of <strong>660 sols</strong> in a standard year. To stay roughly aligned with the astronomical
+          Mars year, which is about <strong>668.6 sols</strong> long, we introduce a leap sol every 10 Mars years,
+          resulting in a leap year with <strong>661 sols</strong>.
+        </p>
+        <p>
+          Even though our calendar doesn't match the Mars year exactly, the date calculations remain precise because
+          they are based on continuous Mars time derived from <em>Julian Date → Mars Sol Date (MSD)</em>. This ensures
+          that all conversions from Earth to Mars (and vice versa) remain consistent over time.
+        </p>
+        <p>
+          When using our custom Mars epoch, the calendar starts on <strong>6 January 2000, 00:00 UTC</strong>, which we define as
+          <strong>Sol 1, Year 1, Month Orion</strong>. This reference point corresponds to
+          <em>Julian Date 2451549.5</em> and is used as our custom epoch instead of NASA’s reference.
+        </p>
+    </details>      
+
+    <details style="margin-top: 1em; font-size: 0.95rem;">
+        <summary style="cursor: pointer; font-weight: bold;">About the Martian months</summary>
+        <p style="margin-top: 0.5em;">
+          Our Martian calendar has 24 months alternating between 28 and 27 sols (Martian days).<br>
+          Each pair of months roughly corresponds to an Earth month:
+        </p>
+        <ul style="columns: 2; margin-top: 0;">
+          <li>Orion / Sirius → January</li>
+          <li>Vega / Lyra → February</li>
+          <li>Cygnus / Altair → March</li>
+          <li>Andromeda / Perseus → April</li>
+          <li>Aldebaran / Taurus → May</li>
+          <li>Castor / Pollux → June</li>
+          <li>Regulus / Leo → July</li>
+          <li>Spica / Virgo → August</li>
+          <li>Antares / Scorpio → September</li>
+          <li>Betelgeuse / Canopus → October</li>
+          <li>Arcturus / Deneb → November</li>
+          <li>Capella / Procyon → December</li>
+        </ul>
+        <p>
+          This pairing is approximate and helps relate Martian months to familiar Earth time periods.  
+          Each Mars year contains 668 sols, and a leap sol is added every 10 years to stay in sync.
+        </p>
+    </details>
+
+    <details style="margin-top: 1em; font-size: 0.95rem;">
+        <summary style="cursor: pointer; font-weight: bold;">Why does the Martian calendar have 660 sols instead of 668?</summary>
+        <p style="margin-top: 0.5em;">
+          While a Martian year is approximately <strong>668.6 sols</strong> long, our calendar uses a simplified structure of
+          <strong>660 sols per standard year</strong>, divided into 24 months alternating between 28 and 27 sols. 
+        </p>
+        <p>
+          This design was chosen for its <strong>simplicity and symmetry</strong>. The alternating 28/27 pattern is easy to remember 
+          and gives the calendar a steady rhythm. Grouped into 12 month-pairs, it also loosely reflects the structure of the 
+          12-month Earth calendar — making it more relatable.
+        </p>
+        <p>
+          Rather than trying to force the calendar to exactly match the astronomical year, we separate <strong>calendar structure</strong> 
+          from <strong>precise timekeeping</strong>. Exact Mars time is calculated from the <em>Julian Date → Mars Sol Date (MSD)</em> 
+          conversion, which ensures that all conversions between Earth and Mars remain astronomically accurate over time.
+        </p>
+        <p>
+          To correct for the difference between the 660-sol calendar and the actual Mars year, we introduce a <strong>leap sol every 10 Mars years</strong>. 
+          This leap sol is added at the end of the final month (Procyon) in leap years, helping the calendar stay roughly in sync over decades.
+        </p>
+    </details>
+
     <hr />
 
     <h1>Mars Time Converter (UTC → MTC)</h1>
@@ -39,10 +107,6 @@
     <h2 id="convertedUTC">Earth Time (UTC): --:--:--</h2>
 
     <hr />
-
-    <!-- h1>Sol Counter</h2>
-        <p>Sol since mission start (2000-01-06): <span id="solCount">--</span></p>
-    -->
 
     <h1>Sol Counter</h2>
     <label for="solStartDate">Start Date (UTC):</label>
