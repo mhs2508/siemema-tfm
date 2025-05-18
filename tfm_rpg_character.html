@@ -1,105 +1,103 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <!-- pi-web-v1 -->
   <meta charset="UTF-8">
   <title>Terraforming Mars RPG – Character Sheet</title>
   <link rel="stylesheet" href="siemema-de.css">
 </head>
-<body class="rpg">
+<body class="rpg" data-translation-file="tfm_rpg_character_en">
   <header>Terraforming Mars RPG – Character Sheet</header>
   <main>
     <div class="language-switch">
-      <label>EN</label>
+      <label data-i18n="label_en">EN</label>
       <label class="switch">
         <input type="checkbox" id="languageSwitch">
         <span class="slider"></span>
       </label>
-      <label>DE</label>
+      <label data-i18n="label_de">DE</label>
     </div>
     <section class="section fieldset-box">
-      <h2 id="character-header">Character</h2>
+      <h2 id="character-header" data-i18n="h2_character">Character</h2>
       <div class="input-grid">
-        <div><label>Name<br><input type="text" name="name"></label></div>
-        <div><label>Age<br><input type="text" name="age"></label></div>
-        <div><label>Sex<br><input type="text" name="sex"></label></div>
-        <div><label>Profession<br><input type="text" name="profession"></label></div>
-        <div><label>Corporation<br><input type="text" name="corporation"></label></div>
-        <div><label>Personality Tags<br><input type="text" name="personality_tags"></label></div>
+        <div><label data-i18n="label_name">Name<br><input type="text" name="name"></label></div>
+        <div><label data-i18n="label_age">Age<br><input type="text" name="age"></label></div>
+        <div><label data-i18n="label_sex">Sex<br><input type="text" name="sex"></label></div>
+        <div><label data-i18n="label_profession">Profession<br><input type="text" name="profession"></label></div>
+        <div><label data-i18n="label_corporation">Corporation<br><input type="text" name="corporation"></label></div>
+        <div><label data-i18n="label_personality_tags">Personality Tags<br><input type="text" name="personality_tags"></label></div>
       </div>
       <br>
-      <label for="background">Character Background:</label><br>
-      <textarea id="background" name="background" rows="15" placeholder="Write the character background here..."></textarea>
+      <label for="background" data-i18n="label_character_background">Character Background:</label><br>
+      <textarea id="background" name="background" rows="15" placeholder="Write the character background here..." data-i18n-placeholder="placeholder_write_the_character_background_here"></textarea>
       <div class="textarea-print" id="background-print"></div>
 
     </section>
 
     <section class="section fieldset-box page-break">
-        <h2 id="abilities-header">Abilities (0)</h2>
-        <p>Values 0 to 4, max. 13 points total. Each character has 4 specialties, granting a re-roll of any non-successful dice when checks fall into these specialties.</p>
+        <h2 id="abilities-header" data-i18n="h2_abilities_0">Abilities (0)</h2>
+        <p data-i18n="p_values_0_to_4_max_13_points_total_each_character_has_4_specialties_granting_a_reroll_of_any_nonsuccessful_dice_when_checks_fall_into_these_specialties">Values 0 to 4, max. 13 points total. Each character has 4 specialties, granting a re-roll of any non-successful dice when checks fall into these specialties.</p>
         <table class="stats-table">
-          <tr>
+          <tbody><tr>
             <td>
-              <label>Scholarship<br>
+              <label data-i18n="label_scholarship">Scholarship<br>
                 <input type="number" min="0" max="4" value="0" class="narrow" name="ability_scholarship">
               </label><br>
-              <input type="text" name="spec_scholarship" placeholder="Specialties">
+              <input type="text" name="spec_scholarship" placeholder="Specialties" data-i18n-placeholder="placeholder_specialties">
             </td>
             <td>
-              <label>Analysis<br>
+              <label data-i18n="label_analysis">Analysis<br>
                 <input type="number" min="0" max="4" value="0" class="narrow" name="ability_analysis">
               </label><br>
-              <input type="text" name="spec_analysis" placeholder="Specialties">
+              <input type="text" name="spec_analysis" placeholder="Specialties" data-i18n-placeholder="placeholder_specialties">
             </td>
             <td>
-                <label>Interaction<br>
+                <label data-i18n="label_interaction">Interaction<br>
                   <input type="number" min="0" max="4" value="0" class="narrow" name="ability_interaction">
                 </label><br>
-                <input type="text" name="spec_interaction" placeholder="Specialties">
+                <input type="text" name="spec_interaction" placeholder="Specialties" data-i18n-placeholder="placeholder_specialties">
               </td>
           </tr>
           <tr>
             <td>
-              <label>Tech<br>
+              <label data-i18n="label_tech">Tech<br>
                 <input type="number" min="0" max="4" value="0" class="narrow" name="ability_tech">
               </label><br>
-              <input type="text" name="spec_tech" placeholder="Specialties">
+              <input type="text" name="spec_tech" placeholder="Specialties" data-i18n-placeholder="placeholder_specialties">
             </td>
             <td>
-                <label>Body<br>
+                <label data-i18n="label_body">Body<br>
                   <input type="number" min="0" max="4" value="0" class="narrow" name="ability_body">
                 </label><br>
-                <input type="text" name="spec_body" placeholder="Specialties">
+                <input type="text" name="spec_body" placeholder="Specialties" data-i18n-placeholder="placeholder_specialties">
               </td>
               <td>
-                <label>Combat Ability<br>
+                <label data-i18n="label_combat_ability">Combat Ability<br>
                   <input type="number" min="0" max="4" value="0" class="narrow" name="ability_combat">
                 </label>
               </td>
           </tr>
-        </table>
+        </tbody></table>
     </section>   
 
     <section class="section fieldset-box">
-        <h2 id="foe-header">Engineering: Fields of Expertise (0)</h2>
-        <p>Values 0 to 8. When creating a character a player may decide to trade 1 ability point into 10 points of FoE (with GM permission even 2 for 20).<br>
+        <h2 id="foe-header" data-i18n="h2_engineering_fields_of_expertise_0">Engineering: Fields of Expertise (0)</h2>
+        <p data-i18n-html="html_values_0_to_8_when_creating_a_character_a_player_may_decide_to_trade_1_ability_point_into_10_points_of_foe_with_gm_permission_even_2_for_20br_after_rolling_a_check_distribute_successes_among_breliabilityb_and_bpowerrangeb_granting_1_point_of_quality_level">Values 0 to 8. When creating a character a player may decide to trade 1 ability point into 10 points of FoE (with GM permission even 2 for 20).<br>
            After rolling a check, distribute successes among <b>reliability</b> and <b>power/range</b>, granting 1 point of quality level.</p>
         <table class="stats-table">
-          <tr>
+          <tbody><tr>
             <td>
-              <label>Chemistry<br>
+              <label data-i18n="label_chemistry">Chemistry<br>
                 <input type="checkbox" name="field_chemistry">
                 <input type="number" min="0" max="8" value="0" class="narrow" name="value_chemistry">
               </label>
             </td>
             <td>
-              <label>Communications<br>
+              <label data-i18n="label_communications">Communications<br>
                 <input type="checkbox" name="field_communications">
                 <input type="number" min="0" max="8" value="0" class="narrow" name="value_communications">
               </label>
             </td>
             <td>
-              <label>Electronics and Electricity<br>
+              <label data-i18n="label_electronics_and_electricity">Electronics and Electricity<br>
                 <input type="checkbox" name="field_electronics">
                 <input type="number" min="0" max="8" value="0" class="narrow" name="value_electronics">
               </label>
@@ -107,19 +105,19 @@
           </tr>
           <tr>
             <td>
-              <label>Geology<br>
+              <label data-i18n="label_geology">Geology<br>
                 <input type="checkbox" name="field_geology">
                 <input type="number" min="0" max="8" value="0" class="narrow" name="value_geology">
               </label>
             </td>
             <td>
-              <label>Life Support<br>
+              <label data-i18n="label_life_support">Life Support<br>
                 <input type="checkbox" name="field_lifesupport">
                 <input type="number" min="0" max="8" value="0" class="narrow" name="value_lifesupport">
               </label>
             </td>
             <td>
-              <label>Mechanical Engineering<br>
+              <label data-i18n="label_mechanical_engineering">Mechanical Engineering<br>
                 <input type="checkbox" name="field_mechanical">
                 <input type="number" min="0" max="8" value="0" class="narrow" name="value_mechanical">
               </label>
@@ -127,19 +125,19 @@
           </tr>
           <tr>
             <td>
-              <label>Microbial Genetics<br>
+              <label data-i18n="label_microbial_genetics">Microbial Genetics<br>
                 <input type="checkbox" name="field_microbial">
                 <input type="number" min="0" max="8" value="0" class="narrow" name="value_microbial">
               </label>
             </td>
             <td>
-              <label>Optics<br>
+              <label data-i18n="label_optics">Optics<br>
                 <input type="checkbox" name="field_optics">
                 <input type="number" min="0" max="8" value="0" class="narrow" name="value_optics">
               </label>
             </td>
             <td>
-              <label>Orbital Operations<br>
+              <label data-i18n="label_orbital_operations">Orbital Operations<br>
                 <input type="checkbox" name="field_orbital">
                 <input type="number" min="0" max="8" value="0" class="narrow" name="value_orbital">
               </label>
@@ -147,19 +145,19 @@
           </tr>
           <tr>
             <td>
-              <label>Plant Genetics<br>
+              <label data-i18n="label_plant_genetics">Plant Genetics<br>
                 <input type="checkbox" name="field_plant">
                 <input type="number" min="0" max="8" value="0" class="narrow" name="value_plant">
               </label>
             </td>
             <td>
-              <label>Robotics<br>
+              <label data-i18n="label_robotics">Robotics<br>
                 <input type="checkbox" name="field_robotics">
                 <input type="number" min="0" max="8" value="0" class="narrow" name="value_robotics">
               </label>
             </td>
             <td>
-              <label>Sensors<br>
+              <label data-i18n="label_sensors">Sensors<br>
                 <input type="checkbox" name="field_sensors">
                 <input type="number" min="0" max="8" value="0" class="narrow" name="value_sensors">
               </label>
@@ -167,93 +165,93 @@
           </tr>
           <tr>
             <td>
-              <label>Transportation<br>
+              <label data-i18n="label_transportation">Transportation<br>
                 <input type="checkbox" name="field_transportation">
                 <input type="number" min="0" max="8" value="0" class="narrow" name="value_transportation">
               </label>
             </td>
             <td>
-              <label>
-                <span contenteditable="true" class="editable-label" data-placeholder="Custom FoE #1">Custom FoE #1</span><br>
+              <label data-i18n="label_custom_foe_1">
+                <span contenteditable="true" class="editable-label" data-placeholder="Custom FoE #1" data-i18n-editable="editable_custom_foe_1">Custom FoE #1</span><br>
                 <input type="checkbox" name="field_custom_1">
                 <input type="number" min="0" max="8" value="0" class="narrow" name="value_custom_1">
               </label>
             </td>
             <td>
-              <label>
-                <span contenteditable="true" class="editable-label" data-placeholder="Custom FoE #2">Custom FoE #2</span><br>
+              <label data-i18n="label_custom_foe_2">
+                <span contenteditable="true" class="editable-label" data-placeholder="Custom FoE #2" data-i18n-editable="editable_custom_foe_2">Custom FoE #2</span><br>
                 <input type="checkbox" name="field_custom_2">
                 <input type="number" min="0" max="8" value="0" class="narrow" name="value_custom_2">
               </label>
             </td>
           </tr>
-        </table>
+        </tbody></table>
     </section>
             
     <section class="section fieldset-box page-break">
-        <h2 id="vital-status-header">Vital Status</h2>
+        <h2 id="vital-status-header" data-i18n="h2_vital_status">Vital Status</h2>
         <div class="fieldset-box-inner">
-            <h3 id="mental-stress-header" class="legend-heading">Mental Stress</h3>
-            <p>When the GM asks for a stress check, an amount of dice are rolled. The results are marked off in the mental stress box. 
+            <h3 id="mental-stress-header" class="legend-heading" data-i18n="h3_mental_stress">Mental Stress</h3>
+            <p data-i18n-html="html_when_the_gm_asks_for_a_stress_check_an_amount_of_dice_are_rolled_the_results_are_marked_off_in_the_mental_stress_box_if_the_same_result_is_marked_twice_this_results_in_a_btemporary_loss_of_controlb">When the GM asks for a stress check, an amount of dice are rolled. The results are marked off in the mental stress box. 
                 If the same result is marked twice, this results in a <b>temporary loss of control.</b></p>
-            <p>When boxes 1-2 and 3-4 are marked both, the character feels uneasy, if 5 gets marked as well, adrenaline takes over: 
+            <p data-i18n="p_when_boxes_12_and_34_are_marked_both_the_character_feels_uneasy_if_5_gets_marked_as_well_adrenaline_takes_over_1d_to_body_checks_1d_to_everything_else_if_the_6_is_added_as_well_modifications_are_22d">When boxes 1-2 and 3-4 are marked both, the character feels uneasy, if 5 gets marked as well, adrenaline takes over: 
                 +1d to Body checks, -1d to everything else. If the 6 is added as well, modifications are +2/-2d.</p>
-            <p>When no longer exposed to the stress (after 1 hours of rest) the player can roll 4d. Each success removes one mental stress box, 
+            <p data-i18n="p_when_no_longer_exposed_to_the_stress_after_1_hours_of_rest_the_player_can_roll_4d_each_success_removes_one_mental_stress_box_beginning_with_the_highest_number">When no longer exposed to the stress (after 1 hours of rest) the player can roll 4d. Each success removes one mental stress box, 
                 beginning with the highest number</p>
-            <label class="checkbox-label"><input type="checkbox" name="stress_1"> 1–2</label>
-            <label class="checkbox-label"><input type="checkbox" name="stress_2"> 3–4</label>
-            <label class="checkbox-label"><input type="checkbox" name="stress_3"> 5</label>
-            <label class="checkbox-label"><input type="checkbox" name="stress_4"> 6</label>
-          </fieldset>
+            <label class="checkbox-label" data-i18n="label_12"><input type="checkbox" name="stress_1"> 1–2</label>
+            <label class="checkbox-label" data-i18n="label_34"><input type="checkbox" name="stress_2"> 3–4</label>
+            <label class="checkbox-label" data-i18n="label_5"><input type="checkbox" name="stress_3"> 5</label>
+            <label class="checkbox-label" data-i18n="label_6"><input type="checkbox" name="stress_4"> 6</label>
+          
         </div>
         
         <div class="fieldset-box-inner">
-            <h3 id="traumas-header" class="legend-heading">Long-Term Traumas</h3>
-            <p>When all the mental stress boxes are marked, add one trauma point. At the end of each game session, roll 1d for each trauma point. 
+            <h3 id="traumas-header" class="legend-heading" data-i18n="h3_longterm_traumas">Long-Term Traumas</h3>
+            <p data-i18n="p_when_all_the_mental_stress_boxes_are_marked_add_one_trauma_point_at_the_end_of_each_game_session_roll_1d_for_each_trauma_point_count_the_nonsuccesses_ignore_any_5_and_count_the_6_as_double_success_for_each_success_resolve_one_failure_the_number_of_remaining_failures_is_the_severity_of_the_longterm_trauma_the_characters_gets">When all the mental stress boxes are marked, add one trauma point. At the end of each game session, roll 1d for each trauma point. 
                 Count the non-successes, ignore any 5 and count the 6 as double success. For each success resolve one failure. 
                 The number of remaining failures is the severity of the long-term trauma the characters gets.</p>
-            <label class="checkbox-label"><input type="checkbox" name="trauma_1"> 1d</label>
-            <label class="checkbox-label"><input type="checkbox" name="trauma_2"> 2d</label>
-            <label class="checkbox-label"><input type="checkbox" name="trauma_3"> 3d</label>
-            <label class="checkbox-label"><input type="checkbox" name="trauma_4"> 4d</label>
-            <label class="checkbox-label"><input type="checkbox" name="trauma_5"> 5d</label>
-            <label class="checkbox-label"><input type="checkbox" name="trauma_6"> 6d</label>
+            <label class="checkbox-label" data-i18n="label_1d"><input type="checkbox" name="trauma_1"> 1d</label>
+            <label class="checkbox-label" data-i18n="label_2d"><input type="checkbox" name="trauma_2"> 2d</label>
+            <label class="checkbox-label" data-i18n="label_3d"><input type="checkbox" name="trauma_3"> 3d</label>
+            <label class="checkbox-label" data-i18n="label_4d"><input type="checkbox" name="trauma_4"> 4d</label>
+            <label class="checkbox-label" data-i18n="label_5d"><input type="checkbox" name="trauma_5"> 5d</label>
+            <label class="checkbox-label" data-i18n="label_6d"><input type="checkbox" name="trauma_6"> 6d</label>
         </div>
     </section>
 
     <section class="section fieldset-box page-break">
-      <h2 id="combat-header">Combat</h2>
+      <h2 id="combat-header" data-i18n="h2_combat">Combat</h2>
           <table class="stats-table">
-            <tr>
+            <tbody><tr>
               <td>
-                <label>Initiative for Attack<br>(Body+Combat)<br>
+                <label data-i18n="label_initiative_for_attackbodycombat">Initiative for Attack<br>(Body+Combat)<br>
                     <input type="number" min="0" max="8" value="0" class="narrow" name="combat_initiative_attack">
                 </label><br>
               </td>
               <td>
-                <label>Initiative<br>(Body x2)<br>
+                <label data-i18n="label_initiativebody_x2">Initiative<br>(Body x2)<br>
                     <input type="number" min="0" max="8" value="0" class="narrow" name="combat_initiative_normal">
                 </label><br>
               </td>
               <td>
-                <label>OCR<br>(Body+Combat)<br>
+                <label data-i18n="label_ocrbodycombat">OCR<br>(Body+Combat)<br>
                   <input type="number" min="0" max="8" value="0" class="narrow" name="combat_ocr">
               </label><br>
               </td>
             </tr>
-          </table>
-          <h3 class="legend-heading" id="weapons-header">Weapons</h3>
+          </tbody></table>
+          <h3 class="legend-heading" id="weapons-header" data-i18n="h3_weapons">Weapons</h3>
           <table class="weapons-table" id="weapons-table">
             <thead>
               <tr>
-                <th style="width:65%; text-align: left;">Weapon</th>
-                <th style="width:20%; text-align: left;">Type</th>
-                <th style="width:15%; text-align: left;">Damage</th>
+                <th style="width:65%; text-align: left;" data-i18n="th_weapon">Weapon</th>
+                <th style="width:20%; text-align: left;" data-i18n="th_type">Type</th>
+                <th style="width:15%; text-align: left;" data-i18n="th_damage">Damage</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td><input type="text" name="weapon_1_name" placeholder="Weapon Name" style="width: 100%;"></td>
+                <td><input type="text" name="weapon_1_name" placeholder="Weapon Name" style="width: 100%;" data-i18n-placeholder="placeholder_weapon_name"></td>
                 <td>
                   <select name="weapon_1_type" style="width: 100%;">
                     <option value="">Choose type</option>
@@ -262,10 +260,10 @@
                     <option value="explosives">Explosives</option>
                   </select>
                 </td>
-                <td><input type="text" name="weapon_1_damage" placeholder="3d6" style="width: 100%;"></td>
+                <td><input type="text" name="weapon_1_damage" placeholder="3d6" style="width: 100%;" data-i18n-placeholder="placeholder_3d6"></td>
               </tr>
               <tr>
-                <td><input type="text" name="weapon_2_name" placeholder="Weapon Name" style="width: 100%;"></td>
+                <td><input type="text" name="weapon_2_name" placeholder="Weapon Name" style="width: 100%;" data-i18n-placeholder="placeholder_weapon_name"></td>
                 <td>
                   <select name="weapon_2_type" style="width: 100%;">
                     <option value="">Choose type</option>
@@ -274,10 +272,10 @@
                     <option value="explosives">Explosives</option>
                   </select>
                 </td>
-                <td><input type="text" name="weapon_2_damage" placeholder="2d6" style="width: 100%;"></td>
+                <td><input type="text" name="weapon_2_damage" placeholder="2d6" style="width: 100%;" data-i18n-placeholder="placeholder_2d6"></td>
               </tr>
               <tr>
-                <td><input type="text" name="weapon_3_name" placeholder="Weapon Name" style="width: 100%;"></td>
+                <td><input type="text" name="weapon_3_name" placeholder="Weapon Name" style="width: 100%;" data-i18n-placeholder="placeholder_weapon_name"></td>
                 <td>
                   <select name="weapon_3_type" style="width: 100%;">
                     <option value="">Choose type</option>
@@ -286,41 +284,41 @@
                     <option value="explosives">Explosives</option>
                   </select>
                 </td>
-                <td><input type="text" name="weapon_3_damage" placeholder="4d6" style="width: 100%;"></td>
+                <td><input type="text" name="weapon_3_damage" placeholder="4d6" style="width: 100%;" data-i18n-placeholder="placeholder_4d6"></td>
               </tr>
             </tbody>
           </table>                             
           <div class="fieldset-box-inner">
-              <h3 id="vitality-header" class="legend-heading">Vitality</h3>
-              <p>Taking damage means injuries. Damage rolls need to be marked off here. The highest unmarked number in vitality determines the maximum dice number 
+              <h3 id="vitality-header" class="legend-heading" data-i18n="h3_vitality">Vitality</h3>
+              <p data-i18n="p_taking_damage_means_injuries_damage_rolls_need_to_be_marked_off_here_the_highest_unmarked_number_in_vitality_determines_the_maximum_dice_number_a_character_can_roll_because_injuries_affect_concentration_and_physical_activity">Taking damage means injuries. Damage rolls need to be marked off here. The highest unmarked number in vitality determines the maximum dice number 
                   a character can roll, because injuries affect concentration and physical activity.</p>
-              <label class="checkbox-label"><input type="checkbox" name="vital_1"> 1</label>
-              <label class="checkbox-label"><input type="checkbox" name="vital_2"> 2</label>
-              <label class="checkbox-label"><input type="checkbox" name="vital_3"> 2</label>
-              <label class="checkbox-label"><input type="checkbox" name="vital_4"> 3</label>
-              <label class="checkbox-label"><input type="checkbox" name="vital_5"> 3</label>
-              <label class="checkbox-label"><input type="checkbox" name="vital_6"> 4</label>
-              <label class="checkbox-label"><input type="checkbox" name="vital_7"> 5</label>
-              <label class="checkbox-label"><input type="checkbox" name="vital_8"> 6</label>
+              <label class="checkbox-label" data-i18n="label_1"><input type="checkbox" name="vital_1"> 1</label>
+              <label class="checkbox-label" data-i18n="label_2"><input type="checkbox" name="vital_2"> 2</label>
+              <label class="checkbox-label" data-i18n="label_2"><input type="checkbox" name="vital_3"> 2</label>
+              <label class="checkbox-label" data-i18n="label_3"><input type="checkbox" name="vital_4"> 3</label>
+              <label class="checkbox-label" data-i18n="label_3"><input type="checkbox" name="vital_5"> 3</label>
+              <label class="checkbox-label" data-i18n="label_4"><input type="checkbox" name="vital_6"> 4</label>
+              <label class="checkbox-label" data-i18n="label_5"><input type="checkbox" name="vital_7"> 5</label>
+              <label class="checkbox-label" data-i18n="label_6"><input type="checkbox" name="vital_8"> 6</label>
           </div>
           <div class="fieldset-box-inner">
-              <h3 id="incapitation-header" class="incapitation-heading">Incapitation</h3>
-              <p>For each even number in a damage roll, mark off an incapitation box. If all incapitation boxes are marked off, the character can no longer 
+              <h3 id="incapitation-header" class="incapitation-heading" data-i18n="h3_incapitation">Incapitation</h3>
+              <p data-i18n="p_for_each_even_number_in_a_damage_roll_mark_off_an_incapitation_box_if_all_incapitation_boxes_are_marked_off_the_character_can_no_longer_participate_in_the_combat_in_other_words_you_are_knocked_out_immobilized_overpowered_etc">For each even number in a damage roll, mark off an incapitation box. If all incapitation boxes are marked off, the character can no longer 
                   participate in the combat. In other words: You are knocked out, immobilized, overpowered etc.</p>
-              <label class="checkbox-label"><input type="checkbox" name="incapitation_1"> 1</label>
-              <label class="checkbox-label"><input type="checkbox" name="incapitation_2"> 2</label>
-              <label class="checkbox-label"><input type="checkbox" name="incapitation_3"> 3</label>
-              <label class="checkbox-label"><input type="checkbox" name="incapitation_4"> 4</label>
+              <label class="checkbox-label" data-i18n="label_1"><input type="checkbox" name="incapitation_1"> 1</label>
+              <label class="checkbox-label" data-i18n="label_2"><input type="checkbox" name="incapitation_2"> 2</label>
+              <label class="checkbox-label" data-i18n="label_3"><input type="checkbox" name="incapitation_3"> 3</label>
+              <label class="checkbox-label" data-i18n="label_4"><input type="checkbox" name="incapitation_4"> 4</label>
           </div>
-        </fieldset>
-      </div>
+        
+      
     </section>
 
     <div class="button-container">
-      <button id="exportBtn">Export</button>
-      <button id="importBtn">Import</button>
-      <button onclick="window.print()">Print</button>
-      <button type="reset">Reset</button>
+      <button id="exportBtn" data-i18n="button_export">Export</button>
+      <button id="importBtn" data-i18n="button_import">Import</button>
+      <button onclick="window.print()" data-i18n="button_print">Print</button>
+      <button type="reset" data-i18n="button_reset">Reset</button>
     </div>
   </main>
   <div class="footer-links">
@@ -328,5 +326,7 @@
     <a href="https://github.com/mhs2508/siemema-tfm/issues">Report Bug</a>
   </div>
 <script src="tfm_rpg_character.js"></script>
-</body>
-</html>
+<script src="language.js"></script>
+
+
+</body></html>
