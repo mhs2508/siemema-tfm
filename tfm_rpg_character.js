@@ -106,16 +106,6 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         });
       }
-      
-      // Waffen importieren
-      const elements = document.querySelectorAll(`[name="${key}"]`);
-      elements.forEach((input) => {
-        if (input.type === "checkbox") {
-          input.checked = data[key];
-        } else {
-          input.value = data[key];
-        }
-      });
 
       // Manuelle Ergänzung für die editierbaren FoE-Labels
       const customFoE1 = document.querySelector('.editable-label[data-placeholder="Custom FoE #1"]');
