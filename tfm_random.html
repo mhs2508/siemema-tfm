@@ -17,12 +17,13 @@
   <button id="generate-button">Generate</button>
   <p></p>
 
-  <div>
-    <h2>Your Game:</h2>
-    <p><b>Board:</b> <span id="selected-game-board"></span></p>
-    <p><b>Game Modes:</b> <span id="selected-game-modes"></span></p>
-    <p><b>Expansions:</b> <span id="selected-game-extensions"></span></p>
-  </div>
+<div>
+  <h2>Your Game:</h2>
+  <p><b>Board:</b> <span id="selected-game-board"></span></p>
+  <p><b>Game Modes:</b> <span id="selected-game-modes"></span></p>
+  <p><b>Expansions:</b> <span id="selected-game-extensions"></span></p>
+  <p><b>Custom Variants:</b> <span id="selected-game-variants"></span></p> <!-- <<< NEU -->
+</div>
 
   <h2>Choose your board:</h2>
   <div id="play-boards">
@@ -32,6 +33,14 @@
       <input checked id="Hellas" type="checkbox" />Hellas</label>
     <label for="Elysium">
       <input checked id="Elysium" type="checkbox" />Elysium</label>
+    <label for="Utopia">
+      <input checked id="Utopia" type="checkbox" />Elysium Planitia</label>
+     <label for="Cimmeria">
+      <input checked id="Cimmeria" type="checkbox" />Terra Cimmeria</label>     
+    <label for="Vastitas">
+      <input checked id="Vastitas" type="checkbox" />Vastitas Borealis</label>
+    <label for="Amazonis">
+      <input checked id="Amazonis" type="checkbox" />Amazonis Planitia</label>
   </div>
 
   <h2>Choose your game modes:</h2>
@@ -47,7 +56,7 @@
   <h2>Choose your expansions:</h2>
   <div id="play-extensions">
     <label for="Prelude">
-      <input checked id="Prelude" type="checkbox" />Prelude</label>
+      <input checked id="Prelude" type="checkbox" />Preludes</label>
     <label for="Venus-Next">
       <input checked id="Venus-Next" type="checkbox" />Venus-Next</label>
     <label for="Colonies">
@@ -58,6 +67,12 @@
       <input checked id="Promos" type="checkbox" />Promos</label>  
     <label for="Promos-Big-Box">
       <input checked id="Promos-Big-Box" type="checkbox" />Promos Big-Box</label>  
+  </div>
+
+  <h2>Choose your custom game variants:</h2>
+  <div id="play-variants">
+    <label for="Mergers">
+      <input checked id="Mergers" type="checkbox" />Mergers</label>
   </div>
 
   <!-- Verweis auf das JavaScript -->

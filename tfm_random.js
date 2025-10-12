@@ -17,6 +17,7 @@ const handleButtonClick = () => {
   const availableGameBoards = getAllSelectedBoards();
   const availableGameModes = getAllSelectedGameModes();
   const availableGameExtensions = getAllSelectedGameExtensions();
+  const availableGameVariants = getAllSelectedGameVariants();
 
   const randomBoard = availableGameBoards.at(
     getRandomNumber(availableGameBoards.length)
@@ -25,7 +26,10 @@ const handleButtonClick = () => {
   let randomGameExtensions = availableGameExtensions.filter(() =>
     getRandomBoolean()
   );
+  const randomGameVariants = availableGameVariants.filter(() => getRandomBoolean());
+
   console.log("Random Extensions:" + randomGameExtensions);
+
   randomGameExtensions = randomGameExtensions.filter((extension) => {
     if (extension === "Turmoil") {
       return (
@@ -48,6 +52,10 @@ const handleButtonClick = () => {
   ).innerText = randomGameExtensions.length
     ? randomGameExtensions.join(",")
     : "None";
+
+  document.querySelector("#selected-game-variants").innerText = randomGameVariants.length
+    ? randomGameVariants.join(",")
+    : "None";
 };
 
 const getAllSelectedBoards = () => {
@@ -55,7 +63,11 @@ const getAllSelectedBoards = () => {
   const boards = [
     { id: "Tharsis", selected: false },
     { id: "Hellas", selected: false },
-    { id: "Elysium", selected: false }
+    { id: "Elysium", selected: false },
+    { id: "Utopia", selected: false },
+    { id: "Cimmeria", selected: false },
+    { id: "Vastitas", selected: false },
+    { id: "Amazonis", selected: false }
   ];
 
   for (let board of boards) {
@@ -100,6 +112,23 @@ const getAllSelectedGameExtensions = () => {
 
   return extensions.filter((item) => item.selected).map((item) => item.id);
 };
+
+// >>> NEU: Custom Game Variants
+const getAllSelectedGameVariants = () => {
+  const variantsDiv = document.querySelector("#play-variants");
+  const variants = [
+    { id: "Mergers", selected: false }
+    // weitere Custom Variants hier hinzufügen
+  ];
+
+  for (let variant of variants) {
+    const input = variantsDiv.querySelector(`#${variant.id}`);
+    variant.selected = input.checked;
+  }
+
+  return variants.filter((item) => item.selected).map((item) => item.id);
+};
+// >>> ENDE NEU: Custom Game Variants
 
 const activeRestrictionForExtensions = () => {
   const venusNextInput = document.querySelector("#Venus-Next");
