@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-  <!-- strato-pangolin-prod-v1 -->  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Terraforming Mars Random Game Generator">
@@ -15,71 +14,72 @@
   <h1>Terraforming Mars Random Game Generator</h1>
 
   <button id="generate-button">Generate</button>
+  <button id="clear-all-button">Clear All</button>
   <p></p>
 
-<div>
-  <h2>Your Game:</h2>
-  <p><b>Board:</b> <span id="selected-game-board"></span></p>
-  <p><b>Game Modes:</b> <span id="selected-game-modes"></span></p>
-  <p><b>Expansions:</b> <span id="selected-game-extensions"></span></p>
-  <p><b>Custom Variants:</b> <span id="selected-game-variants"></span></p> <!-- <<< NEU -->
-</div>
+  <div>
+    <h2>Your Game:</h2>
+    <p><b>Board:</b> <span id="selected-game-board"></span></p>
+    <p><b>Game Modes:</b> <span id="selected-game-modes"></span></p>
+    <p><b>Expansions:</b> <span id="selected-game-extensions"></span></p>
+    <p><b>Custom Variants:</b> <span id="selected-game-variants"></span></p>
+  </div>
 
   <h2>Choose your board:</h2>
   <div id="play-boards">
-    <label for="Tharsis">
-      <input checked id="Tharsis" type="checkbox" />Tharsis</label>
-    <label for="Hellas">
-      <input checked id="Hellas" type="checkbox" />Hellas</label>
-    <label for="Elysium">
-      <input checked id="Elysium" type="checkbox" />Elysium</label>
-    <label for="Utopia">
-      <input checked id="Utopia" type="checkbox" />Elysium Planitia</label>
-     <label for="Cimmeria">
-      <input checked id="Cimmeria" type="checkbox" />Terra Cimmeria</label>     
-    <label for="Vastitas">
-      <input checked id="Vastitas" type="checkbox" />Vastitas Borealis</label>
-    <label for="Amazonis">
-      <input checked id="Amazonis" type="checkbox" />Amazonis Planitia</label>
+    <label><input checked id="Tharsis" type="checkbox" />Tharsis</label>
+    <label><input checked id="Hellas" type="checkbox" />Hellas</label>
+    <label><input checked id="Elysium" type="checkbox" />Elysium</label>
+    <label><input checked id="Utopia" type="checkbox" />Elysium Planitia</label>
+    <label><input checked id="Cimmeria" type="checkbox" />Terra Cimmeria</label>
+    <label><input checked id="Vastitas" type="checkbox" />Vastitas Borealis</label>
+    <label><input checked id="Amazonis" type="checkbox" />Amazonis Planitia</label>
   </div>
 
   <h2>Choose your game modes:</h2>
   <div id="play-modes">
-    <label for="Draft-Modus">
-      <input checked id="Draft-Modus" type="checkbox" />Draft-Modus</label>
-    <label for="Solar-Phase">
-      <input checked id="Solar-Phase" type="checkbox" />Solar-Phase</label>
-    <label for="Highlight-Draft">
-      <input checked id="Highlight-Draft" type="checkbox" />Highlight-Draft</label>
+    <label><input checked id="Draft-Modus" type="checkbox" />Draft-Modus</label>
+    <label><input checked id="Solar-Phase" type="checkbox" />Solar-Phase</label>
+    <label><input checked id="Highlight-Draft" type="checkbox" />Highlight-Draft</label>
   </div>
 
   <h2>Choose your expansions:</h2>
   <div id="play-extensions">
-    <label for="Prelude">
-      <input checked id="Prelude" type="checkbox" />Preludes</label>
-    <label for="Venus-Next">
-      <input checked id="Venus-Next" type="checkbox" />Venus-Next</label>
-    <label for="Colonies">
-      <input checked id="Colonies" type="checkbox" />Colonies</label>
-    <label for="Turmoil">
-      <input checked id="Turmoil" type="checkbox" />Turmoil</label>
-    <label for="Promos">
-      <input checked id="Promos" type="checkbox" />Promos</label>  
-    <label for="Promos-Big-Box">
-      <input checked id="Promos-Big-Box" type="checkbox" />Promos Big-Box</label>  
+    <label><input checked id="Prelude" type="checkbox" />Preludes</label>
+    <label><input checked id="Venus-Next" type="checkbox" />Venus-Next</label>
+    <label><input checked id="Colonies" type="checkbox" />Colonies</label>
+    <label><input checked id="Turmoil" type="checkbox" />Turmoil</label>
+    <label><input checked id="Promos" type="checkbox" />Promos</label>
+    <label><input checked id="Promos-Big-Box" type="checkbox" />Promos Big-Box</label>
   </div>
 
   <h2>Choose your custom game variants:</h2>
   <div id="play-variants">
-    <label for="Mergers">
-      <input checked id="Mergers" type="checkbox" />Mergers</label>
+    <label><input checked id="Mergers" type="checkbox" />Mergers</label>
+    <label><input id="Random-MA" type="checkbox" />Random M&A</label>
   </div>
 
-  <!-- Verweis auf das JavaScript -->
-  <script src="./tfm_random.js"></script>
-  
-  <br>
-  <p></p><a href="index.html">Back to siemema.de</a></p>
-</body>
+  <h2>Milestones & Awards Randomizer</h2>
 
+  <label>
+    <input id="six-ma" type="checkbox" />
+    6 Milestones / Awards (statt 5)
+  </label>
+
+  <br><br>
+  <button id="reroll-ma-button">Reroll M&A</button>
+  <button id="clear-ma-button">Clear M&A</button>
+
+  <h3>Milestones:</h3>
+  <p id="selected-milestones"></p>
+
+  <h3>Awards:</h3>
+  <p id="selected-awards"></p>
+
+  <script src="./tfm_random.js"></script>
+
+  <br><br>
+  <a href="index.html">Back to siemema.de</a>
+
+</body>
 </html>
