@@ -1,50 +1,30 @@
-window.addEventListener("DOMContentLoaded", () => {
-  // --- Main generator ---
-  document.querySelector("#generate-button")
-    .addEventListener("click", handleButtonClick);
+/* ------------------------------ Global State ------------------------------ */
 
-  // --- Clear All output ---
-  document.querySelector("#clear-all-button")
-    .addEventListener("click", clearAll);
-
-  // --- Reroll Milestones & Awards ---
-  document.querySelector("#reroll-ma-button")
-    .addEventListener("click", () => {
-      generateRandomMA();
-      renderMA();
-    });
-
-  // --- Clear only M&A ---
-  document.querySelector("#clear-ma-button")
-    .addEventListener("click", () => {
-      selectedMilestones = [];
-      selectedAwards = [];
-      renderMA();
-    });
-
-  // Do NOT generate M&A automatically on load
-  renderMA();   // shows empty until user clicks "Reroll M&A"
-});
-
+let selectedMilestones = [];
+let selectedAwards = [];
 
 /* ------------------------------ Utilities ------------------------------ */
 
 const getRandomNumber = (size) => Math.floor(Math.random() * size);
 const getRandomBoolean = () => Math.random() < 0.5;
 
-/* ------------------------------ Clear All ------------------------------ */
+const pickRandom = (obj, count) => {
+  const keys = Object.keys(obj);
+  const out = [];
+  while (out.length < count) {
+    const k = keys[getRandomNumber(keys.length)];
+    if (!out.includes(k)) out.push(k);
+  }
+  return out;
+};
 
-const clearAll = () => {
-  // Game output
-  document.querySelector("#selected-game-board").innerText = "";
-  document.querySelector("#selected-game-modes").innerText = "";
-  document.querySelector("#selected-game-extensions").innerText = "";
-  document.querySelector("#selected-game-variants").innerText = "";
-
-  // M&A
-  selectedMilestones = [];
-  selectedAwards = [];
-  renderMA();
+const pickRandomFromList = (array, amount) => {
+  const out = [];
+  while (out.length < amount) {
+    const item = array[getRandomNumber(array.length)];
+    if (!out.includes(item)) out.push(item);
+  }
+  return out;
 };
 
 /* ------------------------------ MILESTONES & AWARDS LIST ------------------------------ */
@@ -84,7 +64,10 @@ const MILESTONES = {
   "Terraformer": "29 TR",
   "Terran": "5 Earth tags",
   "Thawer": "Raised temperature 5 times",
-  "Trader": "3 resource types on cards"
+  "Trader": "3 resource types on cards",
+
+  /* NEW enforced Milestone */
+  "Hoverlord": "Place 3 Venus tags"
 };
 
 const AWARDS = {
@@ -122,63 +105,74 @@ const AWARDS = {
   "Thermalist": "Most heat resources",
   "Traveller": "Most Jovian + Earth tags",
   "Visionary": "Most cards in hand",
-  "Zoologist": "Most animal + microbe resources"
+  "Zoologist": "Most animal + microbe resources",
+
+  /* NEW enforced Award */
+  "Venuphile": "Most Venus tags"
 };
 
 /* ------------------------------ Random M&A ------------------------------ */
 
-let selectedMilestones = [];
-let selectedAwards = [];
-
-const pickRandom = (obj, count) => {
-  const keys = Object.keys(obj);
-  const out = [];
-  while (out.length < count) {
-    const k = keys[getRandomNumber(keys.length)];
-    if (!out.includes(k)) out.push(k);
-  }
-  return out;
-};
-
 const generateRandomMA = () => {
   const six = document.querySelector("#six-ma").checked;
-  const count = six ? 6 : 5;
+  const enforceVenus = document.querySelector("#enforce-venus").checked;
 
-  selectedMilestones = pickRandom(MILESTONES, count);
-  selectedAwards = pickRandom(AWARDS, count);
+  const milestoneCount = six ? 6 : 5;
+  const awardCount = six ? 6 : 5;
+
+  let randomMilestones = pickRandom(MILESTONES, milestoneCount);
+  let randomAwards = pickRandom(AWARDS, awardCount);
+
+  if (six && enforceVenus) {
+    randomMilestones = randomMilestones.filter(m => m !== "Hoverlord");
+    randomAwards = randomAwards.filter(a => a !== "Venuphile");
+
+    const milestonePool = Object.keys(MILESTONES).filter(m => m !== "Hoverlord");
+    const awardPool = Object.keys(AWARDS).filter(a => a !== "Venuphile");
+
+    const moreMilestones = pickRandomFromList(milestonePool, milestoneCount - 1);
+    const moreAwards = pickRandomFromList(awardPool, awardCount - 1);
+
+    randomMilestones = ["Hoverlord", ...moreMilestones];
+    randomAwards = ["Venuphile", ...moreAwards];
+  }
+
+  selectedMilestones = randomMilestones;
+  selectedAwards = randomAwards;
 };
 
 const renderMA = () => {
   document.querySelector("#selected-milestones").innerHTML =
     selectedMilestones.length
-      ? selectedMilestones
-          .map(name => `<span title="${MILESTONES[name]}">${name}</span>`)
-          .join(", ")
+      ? selectedMilestones.map(m => `<span title="${MILESTONES[m]}">${m}</span>`).join(", ")
       : "<i>None</i>";
 
   document.querySelector("#selected-awards").innerHTML =
     selectedAwards.length
-      ? selectedAwards
-          .map(name => `<span title="${AWARDS[name]}">${name}</span>`)
-          .join(", ")
+      ? selectedAwards.map(a => `<span title="${AWARDS[a]}">${a}</span>`).join(", ")
       : "<i>None</i>";
+};
+
+/* ------------------------------ Clear Functions ------------------------------ */
+
+const clearAll = () => {
+  document.querySelector("#selected-game-board").innerText = "";
+  document.querySelector("#selected-game-modes").innerText = "";
+  document.querySelector("#selected-game-extensions").innerText = "";
+  document.querySelector("#selected-game-variants").innerText = "";
+
+  selectedMilestones = [];
+  selectedAwards = [];
+  renderMA();
 };
 
 /* ------------------------------ Game Generator ------------------------------ */
 
 const handleButtonClick = () => {
-  const availableBoards = getAllSelectedBoards();
-  const availableModes = getAllSelectedGameModes();
-  const availableExt = getAllSelectedGameExtensions();
-  const availableVariants = getAllSelectedGameVariants();
-
-  const randomBoard = availableBoards.at(getRandomNumber(availableBoards.length));
-  const randomModes = availableModes.filter(() => getRandomBoolean());
-  let randomExt = availableExt.filter(() => getRandomBoolean());
-  const randomVariants = availableVariants.filter(() => getRandomBoolean());
-
-  // No restrictions anymore
-  randomExt = randomExt;
+  const randomBoard = getAllSelectedBoards().at(getRandomNumber(getAllSelectedBoards().length));
+  const randomModes = getAllSelectedGameModes().filter(() => getRandomBoolean());
+  const randomExt = getAllSelectedGameExtensions().filter(() => getRandomBoolean());
+  const randomVariants = getAllSelectedGameVariants().filter(() => getRandomBoolean());
 
   document.querySelector("#selected-game-board").innerText = randomBoard;
   document.querySelector("#selected-game-modes").innerText =
@@ -191,22 +185,55 @@ const handleButtonClick = () => {
 
 /* ------------------------------ Selection Helpers ------------------------------ */
 
-const getAllSelectedBoards = () => {
-  const ids = ["Tharsis", "Hellas", "Elysium", "Utopia", "Cimmeria", "Vastitas", "Amazonis"];
-  return ids.filter(id => document.querySelector(`#${id}`).checked);
-};
+const getAllSelectedBoards = () =>
+  ["Tharsis", "Hellas", "Elysium", "Utopia", "Cimmeria", "Vastitas", "Amazonis"]
+    .filter(id => document.querySelector(`#${id}`).checked);
 
-const getAllSelectedGameModes = () => {
-  const ids = ["Draft-Modus", "Solar-Phase", "Highlight-Draft"];
-  return ids.filter(id => document.querySelector(`#${id}`).checked);
-};
+const getAllSelectedGameModes = () =>
+  ["Draft-Modus", "Solar-Phase", "Highlight-Draft"]
+    .filter(id => document.querySelector(`#${id}`).checked);
 
-const getAllSelectedGameExtensions = () => {
-  const ids = ["Prelude", "Venus-Next", "Colonies", "Turmoil", "Promos", "Promos-Big-Box"];
-  return ids.filter(id => document.querySelector(`#${id}`).checked);
-};
+const getAllSelectedGameExtensions = () =>
+  ["Prelude", "Venus-Next", "Colonies", "Turmoil", "Promos", "Promos-Big-Box"]
+    .filter(id => document.querySelector(`#${id}`).checked);
 
-const getAllSelectedGameVariants = () => {
-  const ids = ["Mergers", "Random-MA"];
-  return ids.filter(id => document.querySelector(`#${id}`).checked);
-};
+const getAllSelectedGameVariants = () =>
+  ["Mergers", "Random-MA"]
+    .filter(id => document.querySelector(`#${id}`).checked);
+
+/* ------------------------------ DOMContentLoaded ------------------------------ */
+
+window.addEventListener("DOMContentLoaded", () => {
+  document.querySelector("#generate-button")
+    .addEventListener("click", handleButtonClick);
+
+  document.querySelector("#clear-all-button")
+    .addEventListener("click", clearAll);
+
+  document.querySelector("#reroll-ma-button")
+    .addEventListener("click", () => {
+      generateRandomMA();
+      renderMA();
+    });
+
+  document.querySelector("#clear-ma-button")
+    .addEventListener("click", () => {
+      selectedMilestones = [];
+      selectedAwards = [];
+      renderMA();
+    });
+
+  const sixCheckbox = document.querySelector("#six-ma");
+  const venusWrapper = document.querySelector("#enforce-venus-wrapper");
+
+  sixCheckbox.addEventListener("change", () => {
+    venusWrapper.style.display = sixCheckbox.checked ? "block" : "none";
+    if (!sixCheckbox.checked) {
+      document.querySelector("#enforce-venus").checked = false;
+    }
+  });
+
+  // Initial state: no M&A
+  renderMA();
+  venusWrapper.style.display = "none";
+});

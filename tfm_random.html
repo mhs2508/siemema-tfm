@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <!-- strato-pangolin-prod-v1 -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Terraforming Mars Random Game Generator">
@@ -55,7 +56,7 @@
 
   <h2>Choose your custom game variants:</h2>
   <div id="play-variants">
-    <label><input checked id="Mergers" type="checkbox" />Mergers</label>
+    <label><input id="Mergers" type="checkbox" />Mergers</label>
     <label><input id="Random-MA" type="checkbox" />Random M&A</label>
   </div>
 
@@ -65,6 +66,13 @@
     <input id="six-ma" type="checkbox" />
     6 Milestones / Awards (statt 5)
   </label>
+
+  <div id="enforce-venus-wrapper" style="display:none; margin-top: 10px;">
+    <label>
+      <input id="enforce-venus" type="checkbox" />
+      Enforce Venus M&A (Hoverlord & Venuphile)
+    </label>
+  </div>
 
   <br><br>
   <button id="reroll-ma-button">Reroll M&A</button>
