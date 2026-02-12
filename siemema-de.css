@@ -135,6 +135,7 @@ button:hover {
 /* Checkbox-Gruppen */
 .game-modes, .expansions, .player-selection {
     display: flex;
+    flex-wrap: wrap;
     justify-content: left;
     gap: 10px;
     margin-top: 10px;
@@ -596,6 +597,16 @@ body.rpg table.stats-table td input[type="text"] {
         padding: 12px;
     }
 
+    /* Checkbox-Gruppen auf mobil */
+    .game-modes, .expansions, .player-selection {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .game-modes label, .expansions label, .player-selection label {
+        font-size: 14px;
+    }
+
     /* Input-Felder für Touch */
     input[type="number"],
     input[type="text"],
@@ -626,6 +637,16 @@ body.rpg table.stats-table td input[type="text"] {
         box-sizing: border-box;
         padding: 10px;
         margin-bottom: 15px;
+    }
+
+    /* Checkbox-Gruppen als einzelne Spalten */
+    .game-modes, .expansions, .player-selection {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .game-modes label, .expansions label, .player-selection label {
+        font-size: 13px;
     }
 
     /* Tabelle mit horizontalem Scrolling */
