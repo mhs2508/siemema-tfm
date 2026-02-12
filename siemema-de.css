@@ -561,31 +561,71 @@ body.rpg table.stats-table td input[type="text"] {
     font-style: italic;
   }
 
-/* Mobile Anpassungen */
-@media (max-width: 600px) {
-    header {
-        font-size: 1.5em;
-        padding: 15px;
-    }
-
+/* Mobile Anpassungen - Responsive Layout ohne Größenskalierung */
+@media (max-width: 1024px) {
     body {
-        padding: 15px;
+        min-width: auto;
         max-width: 100%;
+        padding: 15px;
     }
 
     main {
-        padding: 15px;
+        min-width: auto;
         max-width: 100%;
-        border-radius: 0;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 12px;
     }
 
+    main {
+        padding: 12px;
+    }
+
+    /* Input-Felder bleiben groß für Touch */
+    input[type="number"],
+    input[type="text"],
+    select {
+        font-size: 16px;
+        min-height: 40px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    /* Wrapper für horizontales Scrolling der Tabelle */
     table {
-        font-size: 0.9em;
+        min-width: 800px;
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
+    /* Buttons auch groß für Touch */
     button {
-        font-size: 0.9em;
-        padding: 8px 16px;
+        font-size: 1em;
+        min-height: 44px;
+        padding: 10px 15px;
+    }
+
+    /* Input-Felder groß halten */
+    input[type="number"],
+    input[type="text"],
+    select {
+        font-size: 16px;
+        min-height: 40px;
+        padding: 8px;
     }
 }
 
