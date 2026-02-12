@@ -561,8 +561,8 @@ body.rpg table.stats-table td input[type="text"] {
     font-style: italic;
   }
 
-/* Mobile Anpassungen - Responsive Layout ohne Größenskalierung */
-@media (max-width: 1024px) {
+/* Mobile Anpassungen - responsive ohne Tabellen-Struktur zu zerstören */
+@media (max-width: 1200px) {
     body {
         min-width: auto;
         max-width: 100%;
@@ -585,55 +585,81 @@ body.rpg table.stats-table td input[type="text"] {
         padding: 12px;
     }
 
-    /* Input-Felder bleiben groß für Touch */
+    table {
+        font-size: 0.95em;
+    }
+
+    /* Game Parameters Box anpassen */
+    .game-parameters {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 12px;
+    }
+
+    /* Input-Felder für Touch */
     input[type="number"],
     input[type="text"],
     select {
         font-size: 16px;
-        min-height: 40px;
-        padding: 8px;
     }
 }
 
 @media (max-width: 600px) {
     body {
-        min-width: auto;
-        max-width: 100%;
-        width: 100%;
         padding: 10px;
         box-sizing: border-box;
     }
 
     main {
-        min-width: auto;
-        max-width: 100%;
-        width: 100%;
         padding: 10px;
         box-sizing: border-box;
     }
 
-    /* Wrapper für horizontales Scrolling der Tabelle */
+    header {
+        font-size: 1.5em;
+        padding: 15px;
+    }
+
+    /* Game Parameters Box anpassen */
+    .game-parameters {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+
+    /* Tabelle mit horizontalem Scrolling */
     table {
-        min-width: 800px;
-        display: block;
+        font-size: 0.85em;
         overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
+        display: inline-block;
+        width: 100%;
+        max-width: 100%;
     }
 
-    /* Buttons auch groß für Touch */
-    button {
-        font-size: 1em;
-        min-height: 44px;
-        padding: 10px 15px;
+    th, td {
+        padding: 6px;
     }
 
-    /* Input-Felder groß halten */
+    /* Input-Felder für Touch: groß genug zum Tippen */
     input[type="number"],
     input[type="text"],
     select {
         font-size: 16px;
-        min-height: 40px;
-        padding: 8px;
+        min-height: 38px;
+        padding: 6px;
+    }
+
+    button {
+        font-size: 0.9em;
+        padding: 8px 14px;
+    }
+
+    /* Checkbox und Radio bleibt normal */
+    input[type="checkbox"],
+    input[type="radio"] {
+        width: 16px;
+        height: 16px;
     }
 }
 
