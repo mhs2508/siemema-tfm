@@ -597,11 +597,19 @@ body.rpg table.stats-table td input[type="text"] {
 
 @media (max-width: 600px) {
     body {
+        min-width: auto;
+        max-width: 100%;
+        width: 100%;
         padding: 10px;
+        box-sizing: border-box;
     }
 
     main {
+        min-width: auto;
+        max-width: 100%;
+        width: 100%;
         padding: 10px;
+        box-sizing: border-box;
     }
 
     /* Wrapper für horizontales Scrolling der Tabelle */
