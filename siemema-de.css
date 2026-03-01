@@ -23,6 +23,7 @@ header {
     font-size: 2em;
 }
 
+
 /* Hauptinhalt */
 main {
     background-color: #3b3a39;
@@ -135,14 +136,58 @@ button:hover {
 /* Checkbox-Gruppen */
 .game-modes, .expansions, .player-selection {
     display: flex;
+    flex-wrap: wrap;
     justify-content: left;
     gap: 10px;
     margin-top: 10px;
+    align-items: center;
 }
 
 .game-modes label, .expansions label, .player-selection label {
     color: #f7b32b;
     font-size: 16px;
+    white-space: normal; /* allow wrapping */
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* Ensure checkbox + label pairs wrap together and don't overflow */
+.game-modes input[type="checkbox"],
+.expansions input[type="checkbox"],
+.player-selection input[type="radio"] {
+    margin-right: 6px;
+    flex: 0 0 auto;
+}
+
+.game-modes input[type="checkbox"] + label,
+.expansions input[type="checkbox"] + label,
+.player-selection input[type="radio"] + label {
+    display: inline-block;
+    margin-right: 12px;
+    vertical-align: middle;
+    max-width: calc(50% - 12px);
+}
+
+/* Medium screens (landscape phones / small tablets): two columns */
+@media (max-width: 980px) {
+    .game-modes input[type="checkbox"] + label,
+    .expansions input[type="checkbox"] + label,
+    .player-selection input[type="radio"] + label {
+        max-width: 48%;
+    }
+}
+
+/* Small screens: stack pairs vertically */
+@media (max-width: 600px) {
+    .game-modes, .expansions, .player-selection {
+        flex-direction: column;
+    }
+    .game-modes input[type="checkbox"] + label,
+    .expansions input[type="checkbox"] + label,
+    .player-selection input[type="radio"] + label {
+        max-width: 100%;
+        margin-right: 0;
+    }
 }
 
 /* Texte der Checkboxen WEISS */
@@ -561,31 +606,125 @@ body.rpg table.stats-table td input[type="text"] {
     font-style: italic;
   }
 
-/* Mobile Anpassungen */
+/* Mobile Anpassungen - responsive ohne Tabellen-Struktur zu zerstören */
+@media (max-width: 1200px) {
+    body {
+        min-width: auto;
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    main {
+        min-width: auto;
+        max-width: 100%;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 12px;
+    }
+
+    main {
+        padding: 12px;
+    }
+
+    table {
+        font-size: 0.95em;
+    }
+
+    /* Game Parameters Box anpassen */
+    .game-parameters {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 12px;
+    }
+
+    /* Checkbox-Gruppen auf mobil */
+    .game-modes, .expansions, .player-selection {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .game-modes label, .expansions label, .player-selection label {
+        font-size: 14px;
+    }
+
+    /* Input-Felder für Touch */
+    input[type="number"],
+    input[type="text"],
+    select {
+        font-size: 16px;
+    }
+}
+
 @media (max-width: 600px) {
+    body {
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    main {
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
     header {
         font-size: 1.5em;
         padding: 15px;
     }
 
-    body {
-        padding: 15px;
-        max-width: 100%;
+    /* Game Parameters Box anpassen */
+    .game-parameters {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        margin-bottom: 15px;
     }
 
-    main {
-        padding: 15px;
-        max-width: 100%;
-        border-radius: 0;
+    /* Checkbox-Gruppen als einzelne Spalten */
+    .game-modes, .expansions, .player-selection {
+        flex-direction: column;
+        gap: 6px;
     }
 
+    .game-modes label, .expansions label, .player-selection label {
+        font-size: 13px;
+    }
+
+    /* Tabelle mit horizontalem Scrolling */
     table {
-        font-size: 0.9em;
+        font-size: 0.85em;
+        overflow-x: auto;
+        display: inline-block;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    th, td {
+        padding: 6px;
+    }
+
+    /* Input-Felder für Touch: groß genug zum Tippen */
+    input[type="number"],
+    input[type="text"],
+    select {
+        font-size: 16px;
+        min-height: 38px;
+        padding: 6px;
     }
 
     button {
         font-size: 0.9em;
-        padding: 8px 16px;
+        padding: 8px 14px;
+    }
+
+    /* Checkbox und Radio bleibt normal */
+    input[type="checkbox"],
+    input[type="radio"] {
+        width: 16px;
+        height: 16px;
     }
 }
 
