@@ -17,6 +17,10 @@ const milestoneData = {
     Tharsis: ["Terraformer", "Mayor", "Gardener", "Builder", "Planner"],
     Hellas: ["Diversifier", "Tactician", "Polar Explorer", "Energizer", "Rim Settler"],
     Elysium: ["Generalist", "Specialist", "Ecologist", "Tycoon", "Legend"],
+    AmazonisPlanitia: ["Terran", "Landshaper", "Merchant", "Sponsor", "Lobbyist"],
+    TerraCimmeria: ["Planeteologist", "Architect", "Coastguard", "Forrester", "Fundraiser"],
+    UtopiaPlanitia: ["Manager", "Pioneer", "Trader", "Metallurgist", "Researcher"],
+    VastitasBorealis: ["Agronomist", "Engineer", "Spacefarer", "Geologist", "Farmer"]
 };
 
 const venusMilestone = "Hoverlord";
@@ -25,6 +29,10 @@ const awardData = {
     Tharsis: ["Landlord", "Banker", "Scientist", "Thermalist", "Miner"],
     Hellas: ["Cultivator", "Magnate", "Space Baron", "Excentric", "Contractor"],
     Elysium: ["Celebrity", "Industrialist", "Desert Settler", "Estate Dealer", "Benefactor"],
+    AmazonisPlanitia: ["Collector", "Innovator", "Constructor", "Manufacturer", "Physicist"],
+    TerraCimmeria: ["Electrician", "Founder", "Mogul", "Zoologist", "Forecaster"],
+    UtopiaPlanitia: ["Suburbian", "Investor", "Botanist", "Incorporator", "Metropolist"],
+    VastitasBorealis: ["Traveller", "Landscaper", "Highlander", "Promoter", "Blacksmith"]
 };
 const venusAward = "Venuphile";
 
