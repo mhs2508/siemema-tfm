@@ -1,0 +1,18 @@
+AMAZONIS PLANITIA
+=================
+
+Milestones
+----------
+Terran – 5 Earth tags.
+Landshaper – 1 greenery tile, 1 special tile, and 1 city tile (do not need to be adjacent to each other).
+Merchant – 3 of each standard resource.
+Sponsor – 3 cards in play costing 20 M€ or more.
+Lobbyist – all 7 delegates in play (no delegate in the Lobby or Reserve).
+
+Awards
+------
+Collector – most types of resources, both on player board and cards (e.g. different kinds of microbes only count as 1 type of resource).
+Innovator – most played cards (event cards also count!).
+Constructor – most colonies and city tiles.
+Manufacturer – most steel and heat production combined.
+Physicist – most science and space tags.
